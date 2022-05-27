@@ -33,7 +33,7 @@ function App() {
           <Footer />
         </Route>
         <Route path="/profile"> {/* ToDo ProtectedRoute */}
-          <Header />
+         <Header />
           <Navigation />
           <Profile />
         </Route>
