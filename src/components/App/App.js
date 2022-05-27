@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import Main from '../Main';
+import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Navigation from '../Navigation/Navigation';
@@ -13,7 +13,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
   return (
-    <div className="page">
+    <div className="app-page">
       <Switch>
         <Route exact path="/"> {/* ToDo ProtectedRoute */}
           <Header />
