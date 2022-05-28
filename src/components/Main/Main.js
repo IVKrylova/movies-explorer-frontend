@@ -10,7 +10,6 @@ function Main() {
   return (
     <main className="content">
       <Promo />
-      <NavTab />
       <AboutProject />
       <Techs />
       <AboutMe />

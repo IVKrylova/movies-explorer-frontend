@@ -1,10 +1,10 @@
 import Button from '../Button/Button';
-import './ButtonPromo.css';
+import './NavTabButton.css';
 
-function ButtonPromo() {
+function NavTabButton() {
   return (
     <Button buttonText={'Узнать больше'} buttonClassName={'promo__button'} />
   );
 }
 
-export default ButtonPromo;
+export default NavTabButton;
