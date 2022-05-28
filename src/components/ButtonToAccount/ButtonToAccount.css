@@ -1,0 +1,8 @@
+.button__account {
+  font-size: 14px;
+  line-height: 1.14;
+  padding: 8px 20px;
+  background-color: #313131;
+  color: #fff;
+  border-radius: 20px;
+}

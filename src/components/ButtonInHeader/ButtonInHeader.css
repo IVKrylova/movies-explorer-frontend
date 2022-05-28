@@ -1,20 +1,11 @@
 .button__header {
   background-color: #3ddc84;
-  justify-self: end;
   padding: 5px 12px;
-  margin-right: 14px;
   color: #000;
 }
 
 @media screen and (min-width: 768px) {
   .button__header {
-    margin-right: 30px;
     padding: 8px 20px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .button__header {
-    margin-right: 70px;
   }
 }
