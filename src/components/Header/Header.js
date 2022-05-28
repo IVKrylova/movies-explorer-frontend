@@ -5,7 +5,7 @@ import ButtonInHeader from '../ButtonInHeader/ButtonInHeader';
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header header_place_landing">
       <img className="header__logo" src={logo} alt="Логотип" />
       <Link to="/signup" className="header__link">Регистрация</Link>
       <ButtonInHeader />

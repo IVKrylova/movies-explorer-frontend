@@ -1,6 +1,9 @@
+import './ButtonInHeader.css';
+import Button from "../Button/Button";
+
 function ButtonInHeader() {
   return (
-    <div></div>
+    <Button buttonText={'Войти'} buttonClassName={'button__header'} />
   );
 }
 
