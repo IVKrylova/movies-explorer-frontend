@@ -5,7 +5,7 @@
   font-size: 11px;
   line-height: 1.45;
   font-weight: 400;
-  padding: 70px 18px;
+  padding: 0 18px 70px;
   box-sizing: border-box;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .timing {
-  margin: 60px 0 70px;
+  margin: 60px 0 0;
   list-style-type: none;
   padding: 0;
   display: grid;
@@ -73,7 +73,7 @@
 
 @media screen and (min-width: 768px) {
   .about-project {
-    padding: 0 50px;
+    padding: 0 50px 90px;
   }
 
   .about-project__list {
@@ -101,13 +101,12 @@
     font-size: 14px;
     line-height: 1.2;
     grid-template-columns: 1fr 4fr;
-    margin-bottom: 120px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-project {
-    padding: 0 70px;
+    padding: 0 70px 110px;
   }
 
   .about-project__list {
@@ -123,6 +122,5 @@
   .timing {
     max-width: 1140px;
     margin-top: 110px;
-    margin-bottom: 140px;
   }
 }

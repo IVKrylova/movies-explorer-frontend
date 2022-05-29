@@ -1,6 +1,10 @@
 .techs {
-  padding: 70px 18px;
-
+  padding: 0 18px 70px;
+  color: #fff;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
 }
 
 @media screen and (min-width: 1280px) {
