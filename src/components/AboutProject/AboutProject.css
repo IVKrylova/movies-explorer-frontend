@@ -5,7 +5,8 @@
   font-size: 11px;
   line-height: 1.45;
   font-weight: 400;
-  margin: 0 18px;
+  padding: 70px 18px;
+  box-sizing: border-box;
 }
 
 .about-project__list {
@@ -72,7 +73,7 @@
 
 @media screen and (min-width: 768px) {
   .about-project {
-    margin: 0 50px;
+    padding: 0 50px;
   }
 
   .about-project__list {
@@ -106,7 +107,7 @@
 
 @media screen and (min-width: 1280px) {
   .about-project {
-    margin: 0 70px;
+    padding: 0 70px;
   }
 
   .about-project__list {

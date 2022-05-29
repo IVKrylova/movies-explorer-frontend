@@ -5,7 +5,7 @@
   line-height: 1.22;
   letter-spacing: -0.04em;
   color: #fff;
-  margin: 70px 0 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
 }
@@ -13,6 +13,12 @@
 .section-title::after {
   content: '';
   border-bottom: solid 1px #dadada;
+  margin-top: 28px;
+}
+
+.section-title_line_black::after {
+  content: '';
+  border-bottom: solid 1px #000;
   margin-top: 28px;
 }
 

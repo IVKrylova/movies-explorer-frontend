@@ -1,0 +1,10 @@
+.techs {
+  padding: 70px 18px;
+
+}
+
+@media screen and (min-width: 1280px) {
+  .techs {
+    max-width: 1280px;
+  }
+}
