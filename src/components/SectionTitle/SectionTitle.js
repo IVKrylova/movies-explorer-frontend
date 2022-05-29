@@ -3,6 +3,7 @@ import './SectionTitle.css';
 function SectionTitle(props) {
   return (
     /* ToDo белая линия при зазрешении > 768px в techs */
+    /* ToDo добавть модификатор при разрешении > 768px about-me*/
     <h2 className={`section-title ${props.classModifier}`}>{props.titleText}</h2>
   );
 }
