@@ -11,6 +11,8 @@
 }
 
 .about-me__photo {
+  grid-column: 1/2;
+  grid-row: 2/3;
   margin-top: 60px;
   width: 292px;
   height: 352px;
@@ -21,6 +23,8 @@
 }
 
 .about-me__content {
+  grid-column: 1/2;
+  grid-row: 3/4;
   max-width: 292px;
   width: 100%;
   justify-self: center;
