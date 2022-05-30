@@ -8,8 +8,10 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 function Movies() {
   return (
     <main className="movies">
-      <SearchForm />
-      <FilterCheckbox />
+      <section className="search-films">
+        <SearchForm />
+        <FilterCheckbox />
+      </section>
       <Preloader />
       <MoviesCardList />
       <MoviesCard />

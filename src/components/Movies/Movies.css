@@ -1,0 +1,19 @@
+.movies {
+  width: 100%;
+}
+
+.search-films {
+  padding: 0 14px 75px;
+}
+
+@media screen and (min-width: 768px) {
+  .search-films {
+    padding: 0 30px 63px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .search-films {
+    padding: 0 70px 55px;
+  }
+}
