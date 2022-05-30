@@ -5,7 +5,8 @@
   font-size: 11px;
   line-height: 1.45;
   font-weight: 400;
-  padding: 0 18px 70px;
+  /* padding: 0 18px 70px; */
+  padding: 0 18px 55px;
   box-sizing: border-box;
   width: 100%;
 }
@@ -40,7 +41,7 @@
   display: grid;
   grid-template-columns: 1fr 1.84fr;
   width: 100%;
-  max-width: 284px;
+  /* max-width: 284px; */
   text-align: center;
   box-sizing: border-box;
 }
@@ -79,7 +80,8 @@
 
 @media screen and (min-width: 768px) {
   .about-project {
-    padding: 0 50px 90px;
+    /* padding: 0 50px 90px; */
+    padding: 0 50px 77px;
   }
 
   .about-project__list {
@@ -106,7 +108,8 @@
 
 @media screen and (min-width: 1280px) {
   .about-project {
-    padding: 0 70px 110px;
+    /* padding: 0 70px 110px; */
+    padding: 0 70px 90px;
   }
 
   .about-project__list {

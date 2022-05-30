@@ -112,7 +112,8 @@
   }
 
   .about-me__links {
-    margin-top: 87px;
+    /* margin-top: 87px; */
+    margin-top: 69px;
   }
 }
 
@@ -147,6 +148,6 @@
   }
 
   .about-me__links {
-    margin-top: 100px;
+    margin-top: 72px;
   }
 }

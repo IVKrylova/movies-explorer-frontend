@@ -1,5 +1,6 @@
 .techs {
-  padding: 0 18px 70px;
+  /* padding: 0 18px 70px; */
+  padding: 0 18px 80px;
   color: #fff;
   font-weight: 400;
   display: flex;
@@ -52,7 +53,8 @@
 @media screen and (min-width: 768px) {
   .techs {
     background-color: #272727;
-    padding: 0 50px 90px;
+    padding: 0 50px 86px;
+    /* padding: 0 50px 90px; */
   }
 
   .techs__subtitle {
@@ -79,6 +81,7 @@
 @media screen and (min-width: 1280px) {
   .techs {
     max-width: 1280px;
+    padding: 0 70px 102px;
   }
 
   .techs__subtitle {
