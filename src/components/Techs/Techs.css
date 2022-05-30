@@ -1,5 +1,4 @@
 .techs {
-  /* padding: 0 18px 70px; */
   padding: 0 18px 80px;
   color: #fff;
   font-weight: 400;
@@ -54,7 +53,6 @@
   .techs {
     background-color: #272727;
     padding: 0 50px 86px;
-    /* padding: 0 50px 90px; */
   }
 
   .techs__subtitle {

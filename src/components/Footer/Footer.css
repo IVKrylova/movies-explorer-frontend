@@ -64,7 +64,6 @@
   .footer__title {
     grid-column: 1/3;
     grid-row: 1/2;
-    /* margin-top: 80px; */
     margin-top: 76px;
   }
 
