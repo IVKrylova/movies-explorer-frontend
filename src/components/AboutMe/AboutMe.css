@@ -8,18 +8,22 @@
   font-style: normal;
   font-weight: 400;
   align-self: center;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .about-me__photo {
   grid-column: 1/2;
   grid-row: 2/3;
   margin-top: 60px;
-  width: 292px;
+  width: 276px;
   height: 352px;
+  object-fit: cover;
   display: block;
   box-sizing: border-box;
   border-radius: 10px;
   justify-self: center;
+  border: none;
 }
 
 .about-me__content {

@@ -40,8 +40,9 @@
   display: grid;
   grid-template-columns: 1fr 1.84fr;
   width: 100%;
-  min-width: 284px;
+  max-width: 284px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .timing__item {

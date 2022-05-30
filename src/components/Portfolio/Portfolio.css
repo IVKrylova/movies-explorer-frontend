@@ -2,6 +2,8 @@
   padding: 0 14px 70px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .portfolio__title {
