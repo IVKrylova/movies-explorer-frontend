@@ -1,6 +1,11 @@
+import './FilterCheckbox.css'
+
 function FilterCheckbox() {
   return (
-    <section></section>
+    <div className="filter-checkbox">
+      <button type="button" className="filter-checkbox__button" ariaLabel="фильтр короткометражных фильмов"></button>
+      <p className="filter-checkbox__text">Короткометражки</p>
+    </div>
   );
 }
 
