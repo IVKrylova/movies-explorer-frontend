@@ -21,6 +21,9 @@
   content: '';
   border-bottom: solid 1px #000;
   margin-top: 28px;
+  display: block;
+  height: 1px;
+  width: 100%;
 }
 
 .section-title_width_max {
