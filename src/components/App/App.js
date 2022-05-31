@@ -10,6 +10,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import { movies } from '../../utils/constants';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path="/movies"> {/* ToDo ProtectedRoute */}
           <Header />
           <Navigation />
-          <Movies />
+          <Movies movies={movies} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}

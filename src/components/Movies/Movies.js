@@ -3,9 +3,8 @@ import SearchForm from '../SearchForm/SearchForm';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoviesCard from '../MoviesCard/MoviesCard';
 
-function Movies() {
+function Movies(props) {
   return (
     <main className="movies">
       <section className="search-films">
@@ -13,8 +12,7 @@ function Movies() {
         <FilterCheckbox />
       </section>
       <Preloader />
-      <MoviesCardList />
-      <MoviesCard />
+      <MoviesCardList  movies={props.movies}/>
     </main>
   );
 }
