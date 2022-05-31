@@ -18,9 +18,7 @@ function MoviesCardList(props) {
                   id={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
                   nameRU={movie.nameRU}
                   duration={calcDuration(movie)}
-                  image={movie.image}
-
-                  classModifier="movie_hidden"/>
+                  image={movie.image}/>
               );
             })}
       </ul>
