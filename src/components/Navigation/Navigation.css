@@ -1,0 +1,129 @@
+.navigation {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.navigation_hidden {
+  display: none;
+}
+
+.navigation__burger-menu {
+  display: block;
+  margin: 15px 14px 0 0;
+  justify-self: end;
+}
+
+.navigation__burger-menu_hidden {
+  display: none;
+}
+
+.navigation__drop-down-menu {
+  display: flex;
+  position: absolute;
+  height: 100vh;
+  flex-direction: column;
+  z-index: 10;
+  background-color: #202020;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+
+.navigation__drop-down-menu_hidden {
+  display: none;
+}
+
+.navigation__button-close {
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  background-image: url(../../images/button-close.svg);
+  background-repeat: no-repeat;
+  width: 31px;
+  height: 31px;
+  background-size: contain;
+  margin: 14px 14px 0 0;
+  align-self: end;
+}
+
+.navigation__list {
+  list-style-type: none;
+  padding: 0;
+  margin: 100px 0 0;
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1rf;
+  row-gap: 24px;
+}
+
+.navigation__link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navigation__link:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+.navigation__link_active {
+  text-decoration: underline;
+}
+
+.navigation__link-to-account {
+  margin-top: auto;
+  margin-bottom: 46px;
+  align-self: center;
+  text-decoration: none;
+}
+
+.navigation__desktop-menu {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    width: 68%;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navigation {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .navigation__drop-down-menu {
+    display: none;
+  }
+
+  .navigation__burger-menu {
+    display: none;
+  }
+
+  .navigation__desktop-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr );
+    margin-top: 21px;
+  }
+
+  .navigation__desktop-list {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: flex;
+    justify-self: center;
+    column-gap: 16px;
+    align-self: center;
+  }
+}

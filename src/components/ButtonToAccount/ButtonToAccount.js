@@ -1,9 +1,9 @@
 import Button from '../Button/Button';
 import './ButtonToAccount.css';
 
-function ButtonToAccount() {
+function ButtonToAccount(props) {
   return (
-    <Button buttonText={'Аккаунт'} buttonClassName={'button__account'} />
+    <Button buttonText={'Аккаунт'} buttonClassName={`button__account ${props.classModifier}`} />
   );
 }
 
