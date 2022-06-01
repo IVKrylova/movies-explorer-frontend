@@ -10,7 +10,7 @@
   font-family: inherit;
   box-sizing: border-box;
   display: block;
-  padding: 20px 0 20px 12px;
+  padding: 18px 0 17px 12px;
   width: 100%;
 }
 
@@ -24,7 +24,7 @@
 
 .search-form__button {
   position: absolute;
-  top: 6px;
+  top: 4px;
   right: 6px;
 }
 

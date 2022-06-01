@@ -1,5 +1,4 @@
 .navigation {
-  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
@@ -58,11 +57,11 @@
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  line-height: 1.22;
+  line-height: 1.45;
   text-align: center;
   display: grid;
-  grid-template-columns: 1rf;
-  row-gap: 24px;
+  row-gap: 19px;
+  box-sizing: border-box;
 }
 
 .navigation__link {
@@ -76,7 +75,7 @@
 }
 
 .navigation__link_active {
-  text-decoration: underline;
+  border-bottom: solid 2px #fff;
 }
 
 .navigation__link-to-account {
@@ -93,6 +92,21 @@
 @media screen and (min-width: 768px) {
   .navigation {
     width: 68%;
+    position: relative;
+  }
+
+  .navigation__burger-menu {
+    width: 50px;
+    margin: 9px 27px 0 0;
+  }
+
+  .navigation__button-close {
+    margin: 22px 22px 0 0;
+  }
+
+  .navigation__list {
+    margin: 108px 0 0;
+    row-gap: 24px;
   }
 }
 
@@ -125,5 +139,14 @@
     justify-self: center;
     column-gap: 16px;
     align-self: center;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+    margin: 0;
+  }
+
+  .navigation__link_active {
+    border-bottom: none;
+    font-weight: 500;
   }
 }

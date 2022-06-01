@@ -1,6 +1,6 @@
 .filter-checkbox {
   display: flex;
-  margin-top: 32px;
+  margin-top: 30px;
   column-gap: 13px;
   position: relative;
 }
@@ -37,7 +37,7 @@
   box-sizing: border-box;
   border-bottom: 1px solid rgba(170, 170, 170, .2);
   position: absolute;
-  top: 64px;
+  top: 82px;
 }
 
 @media screen and (min-width: 768px) {
@@ -46,7 +46,7 @@
   }
 
   .filter-checkbox::after {
-    top: 52px;
+    top: 70px;
   }
 
   .filter-checkbox__text {
@@ -55,8 +55,8 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .filter-checkbox::after {
-    top: 44px;
+    top: 61px;
   }
 }

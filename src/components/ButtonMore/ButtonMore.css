@@ -18,7 +18,7 @@
 .button-more__place_movies {
   width: 240px;
   justify-self: center;
-  margin: 50px auto 80px;
+  margin: 50px auto 76px;
 }
 
 @media screen and (min-width: 768px) {
