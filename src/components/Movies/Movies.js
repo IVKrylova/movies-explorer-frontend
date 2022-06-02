@@ -4,7 +4,7 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import ButtonMore from '../ButtonMore/ButtonMore';
 
-function Movies(props) {
+const Movies = props => {
   return (
     <main className="movies">
       <SearchMovies />

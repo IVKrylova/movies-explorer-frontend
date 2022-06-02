@@ -1,6 +1,6 @@
 import './Button.css';
 
-function Button(props) {
+const Button = props => {
   return (
     <button type="button" className={`button ${props.buttonClassName}`}>
       {props.buttonText}

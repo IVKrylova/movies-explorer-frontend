@@ -1,7 +1,7 @@
 import Button from '../Button/Button';
 import './ButtonMore.css';
 
-function ButtonMore(props) {
+const ButtonMore = props => {
   return (
     <Button buttonText={props.buttonText} buttonClassName={`button-more ${props.classModifier}`} />
   );

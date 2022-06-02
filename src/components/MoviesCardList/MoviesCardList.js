@@ -1,7 +1,7 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList(props) {
+const MoviesCardList = props => {
   // рассчет длительности фильма
   const calcDuration = movie => {
     return parseInt(movie.duration / 60) > 0 ?

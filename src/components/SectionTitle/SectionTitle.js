@@ -1,6 +1,6 @@
 import './SectionTitle.css';
 
-function SectionTitle(props) {
+const SectionTitle = props => {
   return (
     /* ToDo белая линия при зазрешении > 768px в techs */
     /* ToDo добавть модификатор при разрешении > 768px about-me*/

@@ -1,7 +1,7 @@
 import './Portfolio.css'
 import linkIcon from '../../images/portfolio-link-icon.svg'
 
-function Portfolio() {
+const Portfolio = _ => {
   return (
     <section className="portfolio">
       <h2 className="portfolio__title">Портфолио</h2>

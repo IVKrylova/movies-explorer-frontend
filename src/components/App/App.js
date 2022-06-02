@@ -13,7 +13,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import { movies } from '../../utils/constants';
 import { useLocation } from 'react-router';
 
-function App() {
+const App = _ => {
   // стейт бургерного меню
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 

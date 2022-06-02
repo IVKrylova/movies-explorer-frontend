@@ -1,6 +1,6 @@
 import './MoviesCard.css';
 
-function MoviesCard(props) {
+const MoviesCard = props => {
 
 return (
   <li className={`movie`}> {/* ToDo: на следующем этапе реализовать отображение кнопки удалить при наведении на карточку для экранов > 768px onMouseOut onMouseOver */}

@@ -3,7 +3,7 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchMovies from '../SearchMovies/SearchMovies';
 
-function SavedMovies(props) {
+const SavedMovies = props => {
   return (
     <main className="saved-movies">
       <SearchMovies />

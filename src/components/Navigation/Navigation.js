@@ -3,7 +3,7 @@ import burgerMenu from '../../images/header-icon-menu.svg';
 import { Link } from 'react-router-dom';
 import ButtonToAccount from '../ButtonToAccount/ButtonToAccount';
 
-function Navigation(props) {
+const Navigation = props => {
   return (
     <section className={`navigation ${props.currentUrl === '/' ? 'navigation_hidden' : ''}`}>
       {/* иконка бургерного меню */}

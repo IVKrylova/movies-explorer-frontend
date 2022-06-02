@@ -1,7 +1,7 @@
 import './ButtonInHeader.css';
 import Button from "../Button/Button";
 
-function ButtonInHeader() {
+const ButtonInHeader = _ => {
   return (
     <Button buttonText={'Войти'} buttonClassName={'button__header'} />
   );

@@ -2,7 +2,7 @@ import './AboutMe.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import myPhoto from '../../images/my-photo.png';
 
-function AboutMe() {
+const AboutMe = _ => {
   return (
     <section className="about-me">
       <SectionTitle titleText="Студент"

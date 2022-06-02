@@ -2,7 +2,7 @@ import './Promo.css';
 import promoLogo from '../../images/promo-logo.svg';
 import ButtonMore from '../ButtonMore/ButtonMore';
 
-function Promo() {
+const Promo = _ => {
   return (
     <section className="promo">
       <img src={promoLogo} alt="Логотип в промо" className="promo__logo" />

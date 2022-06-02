@@ -1,4 +1,6 @@
-function Profile() {
+import './Profile.css';
+
+const Profile = _ => {
   return (
     <section></section>
   );

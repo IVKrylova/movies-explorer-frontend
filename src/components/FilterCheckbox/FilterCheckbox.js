@@ -1,6 +1,6 @@
 import './FilterCheckbox.css'
 
-function FilterCheckbox() {
+const FilterCheckbox = _ => {
   return (
     <div className="filter-checkbox">
       <button type="button" className="filter-checkbox__button" aria-label="фильтр короткометражных фильмов"></button>

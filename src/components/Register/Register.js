@@ -1,4 +1,6 @@
-function Register() {
+import './Register.css';
+
+const Register = _ => {
   return (
     <section></section>
   );

@@ -1,7 +1,7 @@
 import SectionTitle from '../SectionTitle/SectionTitle';
 import './Techs.css';
 
-function Techs() {
+const Techs = _ => {
   return (
     <section className="techs">
       <SectionTitle titleText='Технологии'

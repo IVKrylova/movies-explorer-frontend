@@ -1,7 +1,7 @@
 import './AboutProject.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
-function AboutProject() {
+const AboutProject = _ => {
   return (
     <section className="about-project">
       <SectionTitle titleText='О проекте' />

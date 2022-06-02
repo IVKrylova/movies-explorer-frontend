@@ -1,6 +1,6 @@
 import './Footer.css';
 
-function Footer() {
+const Footer = _ => {
   return (
     <footer className="footer">
       <h2 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h2>
