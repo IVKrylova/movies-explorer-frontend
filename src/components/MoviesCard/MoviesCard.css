@@ -41,6 +41,11 @@
   width: 14px;
   height: 12px;
   justify-self: end;
+  display: block;
+}
+
+.movie__like_hidden {
+  display: none;
 }
 
 .movie__like_active {
@@ -48,6 +53,31 @@
 }
 
 .movie__like:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+.movie__delete {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 14px 0 0;
+  background-color: transparent;
+  background-image: url(../../images/button-close.svg);
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border: none;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+  justify-self: end;
+  background-size: cover;
+}
+
+.movie__delete_hidden {
+  display: none;
+}
+
+.movie__delete:hover {
   cursor: pointer;
   opacity: .8;
 }
@@ -60,9 +90,15 @@
   font-size: 10px;
   line-height: 1.2;
   color: #8b8b8b;
+  grid-column: 1/2;
+  grid-row: 3/4;
 }
 
 @media screen and (min-width: 768px) {
+  .movie_hovered {
+    cursor: pointer;
+  }
+
   .movie__img {
     width: 339px;
     height: 190px;
@@ -80,6 +116,16 @@
 
   .movie__like {
     margin-right: 22px;
+  }
+
+  /* ToDo:  на следующем этапе реализовать отображение
+  кнопки удалить при наведении на карточку для экранов > 768px */
+  .movie__delete {
+    display: none;
+  }
+
+  .movie__delete_visible {
+    display: block;
   }
 }
 

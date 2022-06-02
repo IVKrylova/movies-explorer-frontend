@@ -14,7 +14,7 @@ import { movies } from '../../utils/constants';
 import { useLocation } from 'react-router';
 
 function App() {
-  // стейты бургерного меню
+  // стейт бургерного меню
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   // получаем текущий URL
@@ -47,7 +47,8 @@ function App() {
             isOpenMenu={isOpenMenu}
             onClickMenu={openMenu}
             onClickButtonClose={closeMenu} />
-          <Movies movies={movies} />
+          <Movies movies={movies}
+            currentUrl={currentUrl} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}
@@ -55,7 +56,8 @@ function App() {
             isOpenMenu={isOpenMenu}
             onClickMenu={openMenu}
             onClickButtonClose={closeMenu} />
-          <SavedMovies />
+          <SavedMovies movies={movies}
+            currentUrl={currentUrl} />
           <Footer />
         </Route>
         <Route path="/profile"> {/* ToDo ProtectedRoute */}

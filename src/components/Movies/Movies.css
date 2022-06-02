@@ -2,21 +2,3 @@
   display: grid;
   grid-template-columns: 1fr;
 }
-
-.search-films {
-  padding: 0 7px 60px;
-  box-sizing: border-box;
-}
-
-@media screen and (min-width: 768px) {
-  .search-films {
-    padding: 0 30px 63px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .search-films {
-    padding: 0 70px 55px;
-    max-width: 1280px;
-  }
-}

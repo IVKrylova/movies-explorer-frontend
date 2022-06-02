@@ -13,12 +13,13 @@ function MoviesCardList(props) {
     <section className="movies-cards" aria-label="Блок с фильмами">
       <ul className="movies-list">
         {props.movies.map(movie => {
-              return ( /* ToDo: разное количество карточек для разной ширины экрана */
+              return ( /* ToDo: разное количество карточек для разной ширины экрана, resize */
                 <MoviesCard key={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
                   id={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
                   nameRU={movie.nameRU}
                   duration={calcDuration(movie)}
-                  image={movie.image}/>
+                  image={movie.image}
+                  currentUrl={props.currentUrl} />
               );
             })}
       </ul>

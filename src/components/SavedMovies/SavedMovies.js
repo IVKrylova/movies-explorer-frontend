@@ -1,19 +1,16 @@
 import './SavedMovies.css';
-import SearchForm from '../SearchForm/SearchForm';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import SearchMovies from '../SearchMovies/SearchMovies';
 
-function SavedMovies() {
+function SavedMovies(props) {
   return (
-    <maim className="saved-movies">
-      <SearchForm />
-      <FilterCheckbox />
+    <main className="saved-movies">
+      <SearchMovies />
       <Preloader />
-      <MoviesCardList />
-      <MoviesCard />
-    </maim>
+      <MoviesCardList movies={props.movies}
+        currentUrl={props.currentUrl} />
+    </main>
   );
 }
 

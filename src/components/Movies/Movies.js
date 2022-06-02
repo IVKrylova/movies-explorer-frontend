@@ -1,6 +1,5 @@
 import './Movies.css';
-import SearchForm from '../SearchForm/SearchForm';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import SearchMovies from '../SearchMovies/SearchMovies';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import ButtonMore from '../ButtonMore/ButtonMore';
@@ -8,12 +7,10 @@ import ButtonMore from '../ButtonMore/ButtonMore';
 function Movies(props) {
   return (
     <main className="movies">
-      <section className="search-films">
-        <SearchForm />
-        <FilterCheckbox />
-      </section>
+      <SearchMovies />
       <Preloader />
-      <MoviesCardList  movies={props.movies}/>
+      <MoviesCardList movies={props.movies}
+        currentUrl={props.currentUrl} />
       <ButtonMore buttonText={'Ещё'}
         classModifier={'button-more__place_movies'} />
     </main>
