@@ -1,10 +1,9 @@
 import './FormInput.css';
 
 const FormInput = props => {
-  // ToDo: перенести обработчик в хук валидации формы
   // обработчик изменения инпута
   const handleChange = _ => {
-
+    // ToDo: перенести обработчик в хук валидации формы
   }
 
   return (

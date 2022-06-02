@@ -1,8 +1,11 @@
+import Logo from '../Logo/Logo';
 import './Register.css';
 
 const Register = _ => {
   return (
-    <section></section>
+    <main className="register">
+      <Logo />
+    </main>
   );
 }
 

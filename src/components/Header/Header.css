@@ -7,6 +7,8 @@
   line-height: 1.6;
   justify-content: space-between;
   position: relative;
+  box-sizing: border-box;
+  padding: 18px 14px 0;
 }
 
 .header_place_landing {
@@ -20,19 +22,11 @@
 .header__landing-menu {
   display: flex;
   column-gap: 14px;
-  margin-right: 14px;
   align-self: center;
 }
 
 .header__landing-menu_hidden {
   display: none;
-}
-
-.header__logo {
-  display: block;
-  margin: 18px 0 18px 14px;
-  width: 38px;
-  height: 38px;
 }
 
 .header__link {
@@ -50,19 +44,12 @@
   .header {
     font-size: 12px;
     line-height: 1.33;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .header__landing-menu {
-    margin-right: 30px;
     column-gap: 30px;
-  }
-
-  .header__app-menu {
-    margin-right: 30px;
-  }
-
-  .header__logo {
-    margin-left: 30px;
   }
 
   .header__icon-menu {
@@ -73,17 +60,7 @@
 @media screen and (min-width: 1280px) {
   .header {
     max-width: 1280px;
-  }
-
-  .header__landing-menu {
-    margin-right: 70px;
-  }
-
-  .header__app-menu {
-    margin-right: 70px;
-  }
-
-  .header__logo {
-    margin-left: 70px;
+    padding-left: 70px;
+    padding-right: 70px;
   }
 }

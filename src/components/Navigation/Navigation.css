@@ -10,7 +10,6 @@
 
 .navigation__burger-menu {
   display: block;
-  margin: 15px 14px 0 0;
   justify-self: end;
 }
 
@@ -97,7 +96,6 @@
 
   .navigation__burger-menu {
     width: 50px;
-    margin: 9px 27px 0 0;
   }
 
   .navigation__button-close {
