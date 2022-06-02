@@ -5,7 +5,7 @@ const PageNotFound = _ => {
   const history = useHistory();
 
   return (
-    <section className="page-not-found">
+    <main className="page-not-found">
       <p className="page-not-found__code">404</p>
       <p className="page-not-found__text">Страница не найдена</p>
       <button type="button"
@@ -13,7 +13,7 @@ const PageNotFound = _ => {
         onClick={_ => history.goBack()}>
         Назад
       </button>
-    </section>
+    </main>
   );
 }
 
