@@ -1,0 +1,20 @@
+.form-input {
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  color: #fff;
+}
+
+.form-input_place_profile {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  justify-self: end;
+  text-align: right;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+}
