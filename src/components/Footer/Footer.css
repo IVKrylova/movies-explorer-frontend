@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-.footer__title {
+.footer__text {
   font-weight: inherit;
   font-size: inherit;
   padding: 0;
@@ -22,7 +22,7 @@
   text-align: center;
 }
 
-.footer__title::after {
+.footer__text::after {
   content: '';
   border-bottom: 1px solid #424242;
   margin-top: 20px;
@@ -61,7 +61,7 @@
     line-height: 1.23;
   }
 
-  .footer__title {
+  .footer__text {
     grid-column: 1/3;
     grid-row: 1/2;
     margin-top: 76px;
