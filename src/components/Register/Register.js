@@ -10,7 +10,7 @@ const Register = _ => {
     <main className="register">
       <Logo classModifier />
       <Title titleText="Добро пожаловать!"
-        classModirier="title_place_auth" />
+        classModifier="title_place_auth" />
       <form className="register__form" name="register__form">
         {/* Поле для имени */}
         <label className="register__form-label">Имя</label>
@@ -23,13 +23,13 @@ const Register = _ => {
         {/* Поле для email */}
         <label className="register__form-label">E-mail</label>
         <FormInput type="email"
-          classModirier="form-input_place_auth"
+          classModifier="form-input_place_auth"
           formName="profile-form"
           name="email" />
         {/* Поле для пароля */}
         <label className="register__form-label">Пароль</label>
         <FormInput type="password"
-          classModirier="form-input_place_auth"
+          classModifier="form-input_place_auth"
           formName="profile-form"
           name="password" />
         <FormButton classNameButton="register__form-button"
