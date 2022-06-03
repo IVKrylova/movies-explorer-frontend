@@ -1,46 +1,36 @@
-import Logo from '../Logo/Logo';
-import Title from '../Title/Title';
+import Auth from '../Auth/Auth';
 import FormInput from '../FormInput/FormInput';
-import FormButton from '../FormButton/FormButton';
-import { Link } from 'react-router-dom';
-import './Register.css';
 
 const Register = _ => {
   return (
-    <main className="register">
-      <Logo classModifier="logo_place_auth" />
-      <Title titleText="Добро пожаловать!"
-        classModifier="title_place_auth" />
-      <form className="register__form" name="register-form">
-        {/* Поле для имени */}
-        <label className="register__form-label">Имя</label>
-        <FormInput type="text"
-          classModifier="form-input_place_auth"
-          formName="register-form"
-          name="name"
-          minLength="2"
-          maxLength="30" />
-        {/* Поле для email */}
-        <label className="register__form-label">E-mail</label>
-        <FormInput type="email"
-          classModifier="form-input_place_auth"
-          formName="register-form"
-          name="email" />
-        {/* Поле для пароля */}
-        <label className="register__form-label">Пароль</label>
-        <FormInput type="password"
-          classModifier="form-input_place_auth"
-          formName="register-form"
-          name="password" />
-        <FormButton classNameButton="register__form-button"
-          buttonText="Зарегистрироваться" />
-      </form>
-      <p className="register__text">
-        Уже зарегистрированы?{'\u00A0'}
-        <Link to="/signin" className="register__link">Войти</Link>
-      </p>
-    </main>
-  );
-}
+    <Auth titleText="Добро пожаловать!"
+      nameForm="register"
+      buttonText="Зарегистрироваться"
+      authorizationText="Уже зарегистрированы?"
+      authorizationLink="Войти"
+      authorizationPatch="/signin">
+      {/* Поле для имени */}
+      <label className="authorization__form-label">Имя</label>
+      <FormInput type="text"
+        classModifier="form-input_place_auth"
+        formName="register-form"
+        name="name"
+        minLength="2"
+        maxLength="30" />
+      {/* Поле для email */}
+      <label className="authorization__form-label">E-mail</label>
+      <FormInput type="email"
+        classModifier="form-input_place_auth"
+        formName="register-form"
+        name="email" />
+      {/* Поле для пароля */}
+      <label className="authorization__form-label">Пароль</label>
+      <FormInput type="password"
+        classModifier="form-input_place_auth"
+        formName="register-form"
+        name="password" />
+    </Auth>
+    );
+  }
 
 export default Register;
