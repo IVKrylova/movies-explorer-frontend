@@ -50,8 +50,8 @@
 
 .profile__form-button {
   width: 260px;
-  margin: auto 0 40px;
-  position: absolute;
+  margin: 380px 0 40px;
+  /* position: absolute; */
   bottom: 0;
 }
 
@@ -60,14 +60,14 @@
 }
 
 .buttons-list {
-  margin: auto 0 40px;
+  margin: 380px 0 40px;
   display: flex;
   flex-direction: column;
   padding: 0;
   list-style-type: none;
   align-items: center;
-  row-gap: 16px;
-  position: absolute;
+  row-gap: 16px;/*
+  position: absolute; */
   bottom: 0;
 }
 
@@ -107,8 +107,13 @@
     max-width: 410px;
   }
 
+  .profile__form-button {
+    margin-top: 210px;
+  }
+
   .buttons-list {
     margin-bottom: 269px;
+    margin-top: 210px;
   }
 
   .buttons-list__button {
@@ -130,7 +135,12 @@
     margin-top: 123px;
   }
 
+  .profile__form-button {
+    margin-top: 220px;
+  }
+
   .buttons-list {
     margin-bottom: 70px;
+    margin-top: 220px;
   }
 }
