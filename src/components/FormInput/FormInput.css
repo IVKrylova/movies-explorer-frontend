@@ -18,3 +18,18 @@
   font-size: 11px;
   line-height: 1.18;
 }
+
+.form-input_place_auth {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  position: relative;
+  border-bottom: solid 1px #424242;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.form-input_active {
+  border-bottom: solid 1px #4285f4;
+}

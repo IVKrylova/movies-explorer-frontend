@@ -1,0 +1,54 @@
+.register {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  box-sizing: border-box;
+  padding: 56px 30px 0;
+  grid-template-rows: max-content max-content calc(100vh - 235px) max-content;
+}
+
+.register__form {
+  margin-top: 80px;
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.register__form-label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #8b8b8b;
+  display: block;
+}
+
+.register__form-label:not(:first-child) {
+  margin-top: 24px;
+}
+
+.register__text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #8b8b8b;
+  padding: 0;
+  margin: 14px auto 30px;
+}
+
+.register__link {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+.register__link:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+.register__form-button {
+  margin: auto auto 0;
+  width: 100%;
+}
