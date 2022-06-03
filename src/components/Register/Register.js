@@ -8,15 +8,15 @@ import './Register.css';
 const Register = _ => {
   return (
     <main className="register">
-      <Logo classModifier="logo_place_register" />
+      <Logo classModifier="logo_place_auth" />
       <Title titleText="Добро пожаловать!"
         classModifier="title_place_auth" />
-      <form className="register__form" name="register__form">
+      <form className="register__form" name="register-form">
         {/* Поле для имени */}
         <label className="register__form-label">Имя</label>
         <FormInput type="text"
           classModifier="form-input_place_auth"
-          formName="profile-form"
+          formName="register-form"
           name="name"
           minLength="2"
           maxLength="30" />
@@ -24,13 +24,13 @@ const Register = _ => {
         <label className="register__form-label">E-mail</label>
         <FormInput type="email"
           classModifier="form-input_place_auth"
-          formName="profile-form"
+          formName="register-form"
           name="email" />
         {/* Поле для пароля */}
         <label className="register__form-label">Пароль</label>
         <FormInput type="password"
           classModifier="form-input_place_auth"
-          formName="profile-form"
+          formName="register-form"
           name="password" />
         <FormButton classNameButton="register__form-button"
           buttonText="Зарегистрироваться" />

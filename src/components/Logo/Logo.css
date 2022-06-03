@@ -6,7 +6,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .logo_place_register {
+  .logo_place_auth {
     max-width: 396px;
     width: 100%;
     object-fit: contain;
