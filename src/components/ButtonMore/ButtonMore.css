@@ -34,9 +34,6 @@
 
 @media screen and (min-width: 1280px) {
   .button-more__place_promo {
-    grid-column: 1/2;
-    grid-row: 3/4;
-    margin: 146px 0 75px 70px;
-    justify-self: start;
+    margin: 0;
   }
 }

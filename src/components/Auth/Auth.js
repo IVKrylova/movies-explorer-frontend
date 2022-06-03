@@ -6,7 +6,7 @@ import './Auth.css';
 
 const Auth = props => {
   return (
-    <mail className="authorization">
+    <main className="authorization">
       <Logo classModifier="logo_place_auth" />
       <Title titleText={props.titleText}
         classModifier="title_place_auth" />
@@ -19,7 +19,7 @@ const Auth = props => {
         {props.authorizationText}{'\u00A0'}
         <Link to={props.authorizationPatch} className="authorization__link">{props.authorizationLink}</Link>
       </p>
-    </mail>
+    </main>
   );
 }
 

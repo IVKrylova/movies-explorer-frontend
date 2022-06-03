@@ -11,7 +11,7 @@
 }
 
 .promo__logo {
-  margin-top: 70px;
+  margin-top: 86px;
   width: 210px;
   height: 206px;
 }
@@ -43,7 +43,7 @@
 
 @media screen and (min-width: 768px) {
   .promo__logo {
-    margin-top: 140px;
+    margin-top: 160px;
     width: 310px;
     height: 304px;
   }
@@ -65,13 +65,13 @@
   .promo__logo {
     grid-column: 2/3;
     grid-row: 1/5;
-    margin: 75px 70px 0 0;
+    margin: 90px 70px 0 0;
   }
 
   .promo__title {
     grid-column: 1/2;
     grid-row: 1/2;
-    margin: 75px 0 0 70px;
+    margin: 94px 0 0 70px;
     max-width: 640px;
     text-align: left;
     font-size: 50px;
@@ -89,5 +89,13 @@
     text-align: left;
     margin: 36px 0 0 70px;
     justify-self: start;
+  }
+
+  .promo__link-anchor {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    margin: 146px 0 75px 70px;
+    justify-self: start;
+    display: block;
   }
 }
