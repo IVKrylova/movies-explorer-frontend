@@ -37,6 +37,10 @@
   width: 100%;
 }
 
+.promo__link-anchor {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 768px) {
   .promo__logo {
     margin-top: 140px;

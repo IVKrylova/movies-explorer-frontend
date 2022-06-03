@@ -1,10 +1,12 @@
 import './Logo.css';
 import logo from '../../images/logo.svg';
+import { Link } from 'react-router-dom';
 
 const Logo = props => {
   return (
-    <img className={`logo ${props.classModifier ? props.classModifier : ''}`}
-      src={logo} alt="Логотип" />
+    <Link to="/" className={`logo ${props.classModifier ? props.classModifier : ''}`}>
+      <img src={logo} alt="Логотип" />
+    </Link>
   );
 }
 

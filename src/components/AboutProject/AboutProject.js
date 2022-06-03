@@ -3,7 +3,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 const AboutProject = _ => {
   return (
-    <section className="about-project">
+    <section className="about-project" id="about-project">
       <SectionTitle titleText='О проекте' />
       <ul className="about-project__list">
         <li className="about-project__item">
