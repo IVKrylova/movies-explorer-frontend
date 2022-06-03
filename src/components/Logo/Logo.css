@@ -4,3 +4,12 @@
   height: 38px;
   align-self: center;
 }
+
+@media screen and (min-width: 768px) {
+  .logo_place_register {
+    max-width: 396px;
+    width: 100%;
+    object-fit: contain;
+    object-position: left;
+  }
+}

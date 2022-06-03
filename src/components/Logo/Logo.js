@@ -1,9 +1,10 @@
 import './Logo.css';
 import logo from '../../images/logo.svg';
 
-const Logo = _ => {
+const Logo = props => {
   return (
-    <img className="logo" src={logo} alt="Логотип" />
+    <img className={`logo ${props.classModifier ? props.classModifier : ''}`}
+      src={logo} alt="Логотип" />
   );
 }
 

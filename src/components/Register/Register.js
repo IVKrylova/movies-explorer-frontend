@@ -8,7 +8,7 @@ import './Register.css';
 const Register = _ => {
   return (
     <main className="register">
-      <Logo classModifier />
+      <Logo classModifier="logo_place_register" />
       <Title titleText="Добро пожаловать!"
         classModifier="title_place_auth" />
       <form className="register__form" name="register__form">
