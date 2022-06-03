@@ -8,7 +8,7 @@ const FormInput = props => {
 
   return (
     <input type={props.type}
-      className={`form-input ${props.classModirier}`}
+      className={`form-input ${props.classModifier}`}
       id={`${props.formName}-name`}
       name={props.name}
       minLength={props.minLength}

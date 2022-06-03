@@ -8,14 +8,14 @@ import './Register.css';
 const Register = _ => {
   return (
     <main className="register">
-      <Logo />
+      <Logo classModifier />
       <Title titleText="Добро пожаловать!"
         classModirier="title_place_auth" />
       <form className="register__form" name="register__form">
         {/* Поле для имени */}
         <label className="register__form-label">Имя</label>
         <FormInput type="text"
-          classModirier="form-input_place_auth"
+          classModifier="form-input_place_auth"
           formName="profile-form"
           name="name"
           minLength="2"

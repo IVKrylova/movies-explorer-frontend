@@ -12,7 +12,7 @@ const Profile = _ => {
         <fieldset className="profile__form-fieldset">
           <label className="profile__form-label">Имя</label>
           <FormInpit type="text"
-            classModirier="form-input_place_profile"
+            classModifier="form-input_place_profile"
             formName="profile-form"
             name="name"
             minLength="2"
@@ -23,7 +23,7 @@ const Profile = _ => {
         <fieldset className="profile__form-fieldset">
           <label className="profile__form-label">E-mail</label>
           <FormInpit type="email"
-            classModirier="form-input_place_profile"
+            classModifier="form-input_place_profile"
             formName="profile-form"
             name="email"
             value="test@test.ru" /> {/* ToDo: запонить данными из БД */}
