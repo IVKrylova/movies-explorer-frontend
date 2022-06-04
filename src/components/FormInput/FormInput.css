@@ -8,6 +8,10 @@
   color: #fff;
 }
 
+.form-input_with-error {
+  color: #ee3465;
+}
+
 .form-input_place_profile {
   grid-column: 2/3;
   grid-row: 1/2;

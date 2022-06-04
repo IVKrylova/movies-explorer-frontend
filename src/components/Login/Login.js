@@ -1,5 +1,6 @@
 import Auth from '../Auth/Auth';
 import FormInput from '../FormInput/FormInput';
+import FormErrorMessage from '../FormErrorMessage/FormErrorMessage';
 
 const Login = _ => {
   return (
@@ -15,12 +16,14 @@ const Login = _ => {
           classModifier="form-input_place_auth"
           formName="login-form"
           name="email" />
+        <FormErrorMessage />
         {/* Поле для пароля */}
         <label className="authorization__form-label">Пароль</label>
         <FormInput type="password"
           classModifier="form-input_place_auth"
           formName="login-form"
           name="password" />
+        <FormErrorMessage />
     </Auth>
   );
 }

@@ -1,5 +1,6 @@
 import Auth from '../Auth/Auth';
 import FormInput from '../FormInput/FormInput';
+import FormErrorMessage from '../FormErrorMessage/FormErrorMessage';
 
 const Register = _ => {
   return (
@@ -17,6 +18,7 @@ const Register = _ => {
         name="name"
         minLength="2"
         maxLength="30" />
+      <FormErrorMessage />
       {/* Поле для email */}
       <label className="authorization__form-label">E-mail</label>
       <FormInput type="email"
@@ -29,6 +31,7 @@ const Register = _ => {
         classModifier="form-input_place_auth"
         formName="register-form"
         name="password" />
+      <FormErrorMessage />
     </Auth>
     );
   }

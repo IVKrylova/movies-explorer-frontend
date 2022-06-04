@@ -1,0 +1,17 @@
+.error-message {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: center;
+  color: #ff004c;
+  padding: 0;
+  margin: 227px auto 20px;
+  grid-row: 3/4;
+}
+
+@media screen and (min-width: 768px) {
+  .error-message {
+    margin-top: 139px;
+  }
+}

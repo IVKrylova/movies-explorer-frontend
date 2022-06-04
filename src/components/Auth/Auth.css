@@ -50,8 +50,18 @@
 }
 
 .authorization__form-button {
-  margin: 240px auto 0;
+  margin: 0 auto;
   width: 100%;
+}
+
+.authorization__form-button_disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+}
+
+.authorization__form-button_disabled:hover {
+  cursor: default;
+  opacity: 1;
 }
 
 @media screen and (min-width: 768px) {
@@ -65,10 +75,6 @@
 
   .authorization__form {
     margin-top: 40px;
-  }
-
-  .authorization__form-button {
-    margin-top: 152px;
   }
 
   .authorization__text {

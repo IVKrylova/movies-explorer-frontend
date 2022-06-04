@@ -3,6 +3,7 @@ import FormButton from '../FormButton/FormButton';
 import Title from '../Title/Title';
 import { Link } from 'react-router-dom';
 import './Auth.css';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const Auth = props => {
   return (
@@ -12,6 +13,7 @@ const Auth = props => {
         classModifier="title_place_auth" />
       <form className="authorization__form" name={`${props.nameForm}-form`}>
         {props.children}
+        <ErrorMessage errorMessage="" /> {/* ToDo: если есть ошибка, то выводим ошибку, если нет, то пустую строку */}
         <FormButton classNameButton="authorization__form-button"
           buttonText={props.buttonText} />
       </form>
@@ -19,6 +21,9 @@ const Auth = props => {
         {props.authorizationText}{'\u00A0'}
         <Link to={props.authorizationPatch} className="authorization__link">{props.authorizationLink}</Link>
       </p>
+
+
+
     </main>
   );
 }
