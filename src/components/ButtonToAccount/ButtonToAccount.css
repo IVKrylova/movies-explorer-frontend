@@ -6,11 +6,3 @@
   color: #fff;
   border-radius: 20px;
 }
-
-.button__account_place_desktop-menu {
-  grid-row: 1/2;
-  grid-column: 3/4;
-  max-width: 100px;
-  justify-self: end;
-  margin-right: 70px;
-}

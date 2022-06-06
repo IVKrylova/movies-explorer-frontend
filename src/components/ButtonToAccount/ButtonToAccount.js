@@ -3,7 +3,7 @@ import './ButtonToAccount.css';
 
 const ButtonToAccount = props => {
   return (
-    <Button buttonText={'Аккаунт'} buttonClassName={`button__account ${props.classModifier ? props.classModifier : ''}`} />
+    <Button buttonText={'Аккаунт'} buttonClassName="button__account" />
   );
 }
 

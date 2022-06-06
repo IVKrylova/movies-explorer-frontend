@@ -85,6 +85,14 @@
   text-decoration: none;
 }
 
+.navigation__link-to-account_place_desktop-menu {
+  grid-row: 1/2;
+  grid-column: 3/4;
+  max-width: 100px;
+  justify-self: end;
+  margin-right: 70px;
+}
+
 .navigation__desktop-menu {
   display: none;
 }
@@ -95,7 +103,7 @@
   }
 
   .navigation__button-close {
-    margin: 11px 0 0;
+    margin: 22px 20px 0 0;
   }
 
   .navigation__list {
@@ -136,11 +144,10 @@
     display: flex;
     justify-self: center;
     column-gap: 16px;
-    align-self: center;
     font-size: 13px;
     line-height: 1.4;
     padding: 0;
-    margin: 0;
+    margin: 7px 0 0;
     list-style-type: none;
   }
 
