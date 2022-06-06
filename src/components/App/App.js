@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -44,6 +45,7 @@ const App = _ => {
 
   return (
     <div className="app-page">
+      <Helmet htmlAttributes={{ lang : 'ru' }} />
       <Switch>
         <Route exact path="/"> {/* ToDo ProtectedRoute */}
           <Header currentUrl={currentUrl}
