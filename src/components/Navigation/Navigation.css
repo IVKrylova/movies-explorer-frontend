@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
+  position: relative;
 }
 
 .navigation_hidden {
@@ -19,7 +20,7 @@
 
 .navigation__drop-down-menu {
   display: flex;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   flex-direction: column;
   z-index: 10;
@@ -89,11 +90,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .navigation {
-    width: 68%;
-    position: relative;
-  }
-
   .navigation__burger-menu {
     width: 50px;
   }
@@ -105,6 +101,10 @@
   .navigation__list {
     margin: 108px 0 0;
     row-gap: 24px;
+  }
+
+  .navigation__drop-down-menu {
+    width: 68%;
   }
 }
 
