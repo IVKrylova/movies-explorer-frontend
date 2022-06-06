@@ -118,12 +118,6 @@
     margin-right: 22px;
   }
 
-  /* ToDo:  на следующем этапе реализовать отображение
-  кнопки удалить при наведении на карточку для экранов > 768px */
-  .movie__delete {
-    display: none;
-  }
-
   .movie__delete_visible {
     display: block;
   }
