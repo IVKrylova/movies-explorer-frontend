@@ -6,7 +6,7 @@ const AboutMe = _ => {
   return (
     <section className="about-me">
       <SectionTitle titleText="Студент"
-        classModifier="section-title_width_max" />
+        sizeMaxWidtx="section-title_width_max" />
       <img alt="фото Ирина Крылова" className="about-me__photo" src={myPhoto} />
       <div className="about-me__content">
         <h3 className="about-me__name">Ирина</h3>

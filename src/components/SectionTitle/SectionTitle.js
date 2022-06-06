@@ -1,10 +1,13 @@
 import './SectionTitle.css';
+import '../../hooks/useWindowWidth';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 const SectionTitle = props => {
+  // получаем ширину экрана
+  const screenWidth = useWindowWidth();
+
   return (
-    /* ToDo: белая линия при зазрешении > 768px в techs => resize */
-    /* ToDo: добавть модификатор при разрешении > 768px about-me => resize */
-    <h2 className={`section-title ${props.classModifier ? props.classModifier : ''}`}>
+    <h2 className={`section-title ${props.colorLine && screenWidth <= 768 ? props.colorLine : ''} ${props.sizeMaxWidtx && screenWidth >= 768 ? props.sizeMaxWidtx : ''}`}>
       {props.titleText}
     </h2>
   );

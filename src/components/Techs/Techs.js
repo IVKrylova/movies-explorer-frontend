@@ -5,7 +5,7 @@ const Techs = _ => {
   return (
     <section className="techs">
       <SectionTitle titleText='Технологии'
-        classModifier='section-title_line_black'/>
+        colorLine='section-title_line_black'/>
       <h3 className="techs__subtitle">7 технологий</h3>
       <p className="techs__text">
         На курсе веб-разработки мы освоили технологии,
