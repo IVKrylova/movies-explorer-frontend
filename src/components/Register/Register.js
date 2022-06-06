@@ -17,20 +17,23 @@ const Register = _ => {
         formName="register-form"
         name="name"
         minLength="2"
-        maxLength="30" />
+        maxLength="30"
+        id="register-form-name" />
       <FormErrorMessage />
       {/* Поле для email */}
       <label className="authorization__form-label">E-mail</label>
       <FormInput type="email"
         classModifier="form-input_place_auth"
         formName="register-form"
-        name="email" />
+        name="email"
+        id="register-form-email" />
       {/* Поле для пароля */}
       <label className="authorization__form-label">Пароль</label>
       <FormInput type="password"
         classModifier="form-input_place_auth"
         formName="register-form"
-        name="password" />
+        name="password"
+        id="register-form-password" />
       <FormErrorMessage />
     </Auth>
     );

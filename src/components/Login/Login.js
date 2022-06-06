@@ -15,14 +15,16 @@ const Login = _ => {
         <FormInput type="email"
           classModifier="form-input_place_auth"
           formName="login-form"
-          name="email" />
+          name="email"
+          id="login-form-email" />
         <FormErrorMessage />
         {/* Поле для пароля */}
         <label className="authorization__form-label">Пароль</label>
         <FormInput type="password"
           classModifier="form-input_place_auth"
           formName="login-form"
-          name="password" />
+          name="password"
+          id="login-form-password" />
         <FormErrorMessage />
     </Auth>
   );
