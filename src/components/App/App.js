@@ -15,6 +15,8 @@ import { movies } from '../../utils/constants';
 const App = _ => {
   // стейт бургерного меню
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  // стейт id карточки с наведенным курсором
+  const [idCardHovered, setIdCardHovered] = useState('');
 
   // получаем текущий URL
   const location = useLocation();
@@ -28,6 +30,16 @@ const App = _ => {
   // функция закрытия бургерного меню
   const closeMenu = _ => {
     setIsOpenMenu(false);
+  }
+
+  // обработчик наведения курсора на карточку фильма
+  const handleMouseOverCard = card => {
+    setIdCardHovered(card.id);
+  }
+
+  // обработчик снятия курсора с карточки фильма
+  const handleMouseOutCard = _ => {
+    setIdCardHovered('');
   }
 
   return (
@@ -56,7 +68,10 @@ const App = _ => {
             onClickMenu={openMenu}
             onClickButtonClose={closeMenu} />
           <SavedMovies movies={movies}
-            currentUrl={currentUrl} />
+            currentUrl={currentUrl}
+            idCardHovered={idCardHovered}
+            onMouseOver={handleMouseOverCard}
+            onMouseOut={handleMouseOutCard} />
           <Footer />
         </Route>
         <Route path="/profile"> {/* ToDo ProtectedRoute */}

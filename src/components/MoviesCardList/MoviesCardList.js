@@ -19,7 +19,10 @@ const MoviesCardList = props => {
                   nameRU={movie.nameRU}
                   duration={calcDuration(movie)}
                   image={movie.image}
-                  currentUrl={props.currentUrl} />
+                  currentUrl={props.currentUrl}
+                  idCardHovered={props.idCardHovered}
+                  onMouseOver={props.onMouseOver}
+                  onMouseOut={props.onMouseOut} />
               );
             })}
       </ul>

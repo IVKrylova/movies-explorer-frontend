@@ -9,7 +9,10 @@ const SavedMovies = props => {
       <SearchMovies />
       <Preloader />
       <MoviesCardList movies={props.movies}
-        currentUrl={props.currentUrl} />
+        currentUrl={props.currentUrl}
+        idCardHovered={props.idCardHovered}
+        onMouseOver={props.onMouseOver}
+        onMouseOut={props.onMouseOut} />
     </main>
   );
 }
