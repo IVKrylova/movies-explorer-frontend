@@ -96,7 +96,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .movie:hover {
+  .movie_place_saved-movies:hover {
     cursor: pointer;
   }
 
