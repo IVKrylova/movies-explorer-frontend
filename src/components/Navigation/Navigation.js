@@ -32,7 +32,7 @@ const Navigation = props => {
           </li>
         </ul>
         <Link to="/profile" className="navigation__link-to-account">
-          <ButtonToAccount classModifier='' />
+          <ButtonToAccount />
         </Link>
       </div>
       {/* меню для десктопа */}
@@ -49,7 +49,9 @@ const Navigation = props => {
             </Link>
           </li>
         </ul>
-        <ButtonToAccount classModifier='button__account_place_desktop-menu' />
+        <Link to="/profile" className="navigation__link-to-account">
+          <ButtonToAccount classModifier='button__account_place_desktop-menu' />
+        </Link>
       </div>
     </section>
   );
