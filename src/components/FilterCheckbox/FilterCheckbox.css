@@ -18,6 +18,10 @@
   padding: 0;
 }
 
+.filter-checkbox__button:hover {
+  cursor: pointer;
+}
+
 .filter-checkbox__button_pressed {
   background-image: url(../../images/button-toggle-filter-pressed.svg);
 }
