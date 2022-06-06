@@ -26,6 +26,7 @@
   margin:0 0 0 7px;
   grid-column: 1/2;
   grid-row: 2/3;
+  white-space: nowrap;
 }
 
 .movie__like {
