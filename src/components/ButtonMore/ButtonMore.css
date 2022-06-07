@@ -1,0 +1,39 @@
+.button-more {
+  background-color: transparent;
+  opacity: 0.6;
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  border-radius: 6px;
+  padding: 10px 20px;
+}
+
+.button-more__place_promo {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.button-more__place_movies {
+  width: 240px;
+  justify-self: center;
+  margin: 50px auto 76px;
+}
+
+@media screen and (min-width: 768px) {
+  .button-more__place_promo {
+    margin: 90px auto 76px;
+  }
+
+  .button-more__place_movies {
+    width: 320px;
+    margin: 50px auto 80px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .button-more__place_promo {
+    margin: 0;
+  }
+}

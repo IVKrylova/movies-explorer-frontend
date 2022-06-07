@@ -1,0 +1,125 @@
+.about-project {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.45;
+  font-weight: 400;
+  padding: 0 18px 55px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.about-project__list {
+  margin: 60px 0 0;
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+}
+
+.about-project__item-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about-project__item-text {
+  margin: 16px 0 0;
+}
+
+.timing {
+  margin: 60px 0 0;
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.84fr;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.timing__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.timing__period {
+  margin: 0;
+  line-height: 1.33;
+  padding: 11px 0;
+}
+
+.timing__period_backend {
+  background-color: #3ddc84;
+  color: #000;
+}
+
+.timing__period_frontend {
+  background-color: #303030;
+}
+
+.timing__work {
+  line-height: 1.27;
+  color: #a0a0a0;
+}
+
+@media screen and (min-width: 640px) {
+  .about-project__list {
+    flex-direction: row;
+    column-gap: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-project {
+    padding: 0 50px 77px;
+  }
+
+  .about-project__list {
+    margin-top: 70px;
+  }
+
+  .about-project__item-title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .about-project__item-text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .timing {
+    margin-top: 93px;
+    font-size: 14px;
+    line-height: 1.2;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project {
+    padding: 0 70px 90px;
+  }
+
+  .about-project__list {
+    max-width: 1140px;
+    column-gap: 40px;
+  }
+
+  .about-project__item-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .timing {
+    max-width: 1140px;
+    margin-top: 110px;
+  }
+}

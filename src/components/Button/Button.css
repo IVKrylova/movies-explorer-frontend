@@ -1,0 +1,12 @@
+.button {
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: block;
+  border: none;
+  align-self: center;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: .8;
+}

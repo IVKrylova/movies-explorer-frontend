@@ -1,0 +1,10 @@
+.app-page {
+  background-color: #202020;
+  font-family: 'Inter', Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  justify-items: center;
+}

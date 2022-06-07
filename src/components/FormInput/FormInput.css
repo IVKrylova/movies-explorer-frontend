@@ -1,0 +1,41 @@
+.form-input {
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  color: #fff;
+}
+
+.form-input_with-error {
+  color: #ee3465;
+}
+
+.form-input_place_profile {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  justify-self: end;
+  text-align: right;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+}
+
+.form-input_place_auth {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  position: relative;
+  border-bottom: solid 1px #424242;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.form-input:focus {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: #4285f4;
+}
