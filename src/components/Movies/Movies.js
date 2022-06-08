@@ -5,27 +5,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import ButtonMore from '../ButtonMore/ButtonMore';
 import Message from '../Message/Message';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import useWindowWidth from '../../hooks/useWindowWidth';
-import { useState, useEffect } from 'react';
+import useAmountMovies from '../../hooks/useAmountMovies';
 
 const Movies = props => {
-  // получаем ширину экрана
-  const screenWidth = useWindowWidth();
-  // получаем количество добавляемых фильмов
-  const amountAddedMovies = props.getAddedMovies(screenWidth);
-
-  // стейт количества видимых фильмов на странице
-  const [amountMovies, setAmountMovies] = useState(props.getAmountMovies(screenWidth));
-
-  // установка количества фильмов в зависимости от ширины экрана
-  useEffect(_ => {
-    setAmountMovies(props.getAmountMovies(screenWidth));
-  }, [screenWidth]);
-
-  // обработчик клика по кнопке Еще
-  const handleClick = _ => {
-    setAmountMovies(amountMovies + amountAddedMovies);
-  }
+  // запускаем обработчик определения количества и добавления фильмов на страницу
+  const { amountMovies, handleClick } = useAmountMovies();
 
   return (
     <main className="movies">

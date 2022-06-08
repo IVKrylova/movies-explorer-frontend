@@ -13,13 +13,6 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import { moviesApi } from '../../utils/MoviesApi';
 import { filterByName, filterByDuration } from '../../utils/utils';
-import {
-  AMOUNT_320,
-  AMOUNT_768,
-  AMOUNT_1280,
-  AMOUNT_ADDED_MOVIES_320_768,
-  AMOUNT_ADDED_MOVIES_1280,
-} from '../../utils/constants';
 
 const App = _ => {
   // стейт бургерного меню
@@ -119,26 +112,6 @@ const App = _ => {
     }
   }
 
-  // функция определения начального количества фильмов на странице
-  const getAmountMovies = screenWidth => {
-    if (screenWidth < 768) {
-      return AMOUNT_320;
-    } else if (screenWidth >= 768 && screenWidth < 1280) {
-      return AMOUNT_768;
-    } else {
-      return AMOUNT_1280;
-    }
-  }
-
-  // функция определения количества добавляемых фильмов
-  const getAddedMovies = screenWidth => {
-    if (screenWidth < 1280) {
-      return AMOUNT_ADDED_MOVIES_320_768;
-    } else {
-      return AMOUNT_ADDED_MOVIES_1280;
-    }
-  }
-
   return (
     <div className="app-page">
       <Helmet htmlAttributes={{ lang : 'ru' }} />
@@ -163,9 +136,7 @@ const App = _ => {
             onClick={handleClickCheckbox}
             isShortFilm={isShortFilm}
             errorMessage={errorMessage}
-            isLoading={isLoading}
-            getAmountMovies={getAmountMovies}
-            getAddedMovies={getAddedMovies} />
+            isLoading={isLoading} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}
