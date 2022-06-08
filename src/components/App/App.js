@@ -27,6 +27,8 @@ const App = _ => {
   const [isShortFilm, setIsShortFilm] = useState(false);
   // стейт сообщения об ошибке
   const [errorMessage, setErrorMessage] = useState('');
+  // стейт загрузки ответа на запрос
+  const [isLoading, setIsLoading] = useState(false);
 
   // получаем текущий URL
   const location = useLocation();
@@ -54,6 +56,8 @@ const App = _ => {
 
   // обработчик формы поиска
   const handleSearchForm = searchRequest => {
+    setIsLoading(true);
+    setMovies([]);
     setErrorMessage('');
     moviesApi.getMovies()
     .then(data => {
@@ -69,7 +73,8 @@ const App = _ => {
     .catch(err => {
       console.log(err);
       setErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-    });
+    })
+    .finally(_ => setIsLoading(false));
   }
 
   // обработчик переключателя короткометражных фильмов
@@ -87,6 +92,8 @@ const App = _ => {
       localStorage.setItem('isShortFilm', isShortFilm);
       localStorage.setItem('movies', JSON.stringify(movies));
     } else {
+      setIsLoading(true);
+      setMovies([]);
       setErrorMessage('');
       moviesApi.getMovies()
         .then(data => {
@@ -100,7 +107,8 @@ const App = _ => {
         .catch(err => {
           console.log(err);
           setErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-        });
+        })
+        .finally(_ => setIsLoading(false));
     }
   }
 
@@ -127,7 +135,8 @@ const App = _ => {
             sendProperty={handleSearchForm}
             onClick={handleClickCheckbox}
             isShortFilm={isShortFilm}
-            errorMessage={errorMessage} />
+            errorMessage={errorMessage}
+            isLoading={isLoading} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}

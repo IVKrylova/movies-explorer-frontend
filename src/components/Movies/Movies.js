@@ -12,16 +12,18 @@ const Movies = props => {
       <SearchMovies sendProperty={props.sendProperty}
         onClick={props.onClick}
         isShortFilm={props.isShortFilm} />
-      <Preloader />
+      <Preloader isLoading={props.isLoading} />
       {props.isFirstOpen &&
         <Message message='Начните поиск'
-          movies={props.movies} />
+          movies={props.movies}
+          isLoading={props.isLoading} />
       }
       {!props.isFirstOpen &&
         <>
           <Message message='Ничего не найдено'
             movies={props.movies}
-            errorMessage={props.errorMessage} />
+            errorMessage={props.errorMessage}
+            isLoading={props.isLoading} />
           <ErrorMessage errorMessage={props.errorMessage} />
           <MoviesCardList movies={props.movies}
           currentUrl={props.currentUrl} />
