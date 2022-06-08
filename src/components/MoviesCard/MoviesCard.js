@@ -12,7 +12,8 @@ const MoviesCard = props => {
   }
 
   return (
-    <li className={`movie ${props.currentUrl === '/saved-movies' ? 'movie_place_saved-movies' : ''}`}
+    <li className={`movie ${props.currentUrl === '/saved-movies' ? 'movie_place_saved-movies' : ''}
+      ${props.index >= props.amountMovies ? 'movie_hidden' : ''}`}
       onMouseOver={props.currentUrl === '/saved-movies' ? handleMouseOver : undefined}
       onMouseOut={props.currentUrl === '/saved-movies' ? props.onMouseOut : undefined}>
       <img src={`${IMAGE_URL}${props.image.url}`} alt={props.nameRU} className="movie__img" id={props.id} />

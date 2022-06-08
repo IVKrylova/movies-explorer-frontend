@@ -23,7 +23,9 @@ const MoviesCardList = props => {
               currentUrl={props.currentUrl}
               idCardHovered={props.idCardHovered}
               onMouseOver={props.onMouseOver}
-              onMouseOut={props.onMouseOut} />
+              onMouseOut={props.onMouseOut}
+              amountMovies={props.amountMovies}
+              index={props.movies.indexOf(movie)} />
           );
         })}
       </ul>

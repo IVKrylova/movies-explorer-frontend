@@ -12,3 +12,11 @@ export const moviesOptions = {
     'Content-Type': 'application/json'
   }
 }
+
+// начальное количество фильмов на странице
+export const AMOUNT_320 = 5;
+export const AMOUNT_768 = 8;
+export const AMOUNT_1280 = 12;
+// число фильмов, добавленных кнопкой Еще
+export const AMOUNT_ADDED_MOVIES_320_768 = 2;
+export const AMOUNT_ADDED_MOVIES_1280 = 3;
