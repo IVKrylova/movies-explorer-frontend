@@ -1,5 +1,6 @@
 import './MoviesCard.css';
 import useWindowWidth from '../../hooks/useWindowWidth';
+import { IMAGE_URL } from '../../utils/constants';
 
 const MoviesCard = props => {
   // получаем ширину экрана
@@ -14,7 +15,7 @@ const MoviesCard = props => {
     <li className={`movie ${props.currentUrl === '/saved-movies' ? 'movie_place_saved-movies' : ''}`}
       onMouseOver={props.currentUrl === '/saved-movies' ? handleMouseOver : undefined}
       onMouseOut={props.currentUrl === '/saved-movies' ? props.onMouseOut : undefined}>
-      <img src={props.image} alt={props.nameRU} className="movie__img" id={props.id} />
+      <img src={`${IMAGE_URL}${props.image.url}`} alt={props.nameRU} className="movie__img" id={props.id} />
       <h3 className="movie__name">{props.nameRU}</h3>
       <p className="movie__duration">{props.duration}</p>
       <button type="button"

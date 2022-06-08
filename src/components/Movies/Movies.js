@@ -8,7 +8,7 @@ import Message from '../Message/Message';
 const Movies = props => {
   return (
     <main className="movies">
-      <SearchMovies />
+      <SearchMovies sendProperty={props.sendProperty} />
       <Preloader />
       {props.isFirstOpen &&
         <Message />

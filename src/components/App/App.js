@@ -11,6 +11,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import { moviesApi } from '../../utils/MoviesApi';
 
 const App = _ => {
   // стейт бургерного меню
@@ -19,6 +20,8 @@ const App = _ => {
   const [idCardHovered, setIdCardHovered] = useState('');
   // стейт открытия страницы с поиском фильмов первый раз
   const [isFirstOpen, setIsFirstOpen] = useState(true);
+  // стейт массива фильмов на странице поиска
+  const [movies, setMovies] = useState([]);
 
   // получаем текущий URL
   const location = useLocation();
@@ -44,6 +47,18 @@ const App = _ => {
     setIdCardHovered('');
   }
 
+  // обработчик формы поиска
+  const handleSearchForm = searchRequest => {
+    moviesApi.getMovies()
+    .then(data => {
+      const movies = data.filter(movie => movie.nameRU.includes(searchRequest.movie));
+
+      setMovies(movies);
+      setIsFirstOpen(false);
+    })
+    .catch(err => console.log(err));
+  }
+
   return (
     <div className="app-page">
       <Helmet htmlAttributes={{ lang : 'ru' }} />
@@ -61,9 +76,10 @@ const App = _ => {
             isOpenMenu={isOpenMenu}
             onClickMenu={openMenu}
             onClickButtonClose={closeMenu} />
-          <Movies /* movies={movies} */
+          <Movies movies={movies}
             currentUrl={currentUrl}
-            isFirstOpen={isFirstOpen} />
+            isFirstOpen={isFirstOpen}
+            sendProperty={handleSearchForm} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}

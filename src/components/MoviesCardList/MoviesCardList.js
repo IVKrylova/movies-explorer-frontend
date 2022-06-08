@@ -14,9 +14,9 @@ const MoviesCardList = props => {
       aria-label="Блок с фильмами">
       <ul className="movies-list">
         {props.movies && props.movies.map(movie => {
-          return ( /* ToDo: разное количество карточек для разной ширины экрана, resize */
-            <MoviesCard key={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
-              id={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
+          return (
+            <MoviesCard key={movie.id}
+              id={movie.id}
               nameRU={movie.nameRU}
               duration={calcDuration(movie)}
               image={movie.image}
