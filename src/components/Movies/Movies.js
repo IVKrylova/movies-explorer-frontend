@@ -8,7 +8,9 @@ import Message from '../Message/Message';
 const Movies = props => {
   return (
     <main className="movies">
-      <SearchMovies sendProperty={props.sendProperty} />
+      <SearchMovies sendProperty={props.sendProperty}
+        onClick={props.onClick}
+        isShortFilm={props.isShortFilm} />
       <Preloader />
       {props.isFirstOpen &&
         <Message message='Начните поиск'

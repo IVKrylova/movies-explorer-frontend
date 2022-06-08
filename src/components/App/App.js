@@ -12,6 +12,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import { moviesApi } from '../../utils/MoviesApi';
+import { filterByName, filterByDuration } from '../../utils/utils';
 
 const App = _ => {
   // стейт бургерного меню
@@ -53,17 +54,44 @@ const App = _ => {
   const handleSearchForm = searchRequest => {
     moviesApi.getMovies()
     .then(data => {
-      const movies = data.filter(movie =>
-        movie.nameRU.toLowerCase().includes(searchRequest.movie.toLowerCase())
-      );
+      const searchMovies = filterByName(data, searchRequest.movie);
 
-      setMovies(movies);
+      setMovies(searchMovies);
       setIsFirstOpen(false);
+
       localStorage.setItem('movies', JSON.stringify(movies));
       localStorage.setItem('searchRequest', searchRequest.movie);
       localStorage.setItem('isShortFilm', isShortFilm);
     })
     .catch(err => console.log(err));
+  }
+
+  // обработчик переключателя короткометражных фильмов
+  const handleClickCheckbox = _ => {
+    if (movies.length === 0 && !isShortFilm) {
+      setIsShortFilm(false);
+      return;
+    }
+
+    if (!isShortFilm) {
+      const shortFilm = filterByDuration(movies);
+
+      setIsShortFilm(true);
+      setMovies(shortFilm);
+      localStorage.setItem('isShortFilm', isShortFilm);
+      localStorage.setItem('movies', JSON.stringify(movies));
+    } else {
+      moviesApi.getMovies()
+        .then(data => {
+          const searchMovies = filterByName(data, localStorage.searchRequest);
+
+          setIsShortFilm(false);
+          setMovies(searchMovies);
+          localStorage.setItem('movies', JSON.stringify(movies));
+          localStorage.setItem('isShortFilm', isShortFilm);
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   return (
@@ -86,7 +114,9 @@ const App = _ => {
           <Movies movies={movies}
             currentUrl={currentUrl}
             isFirstOpen={isFirstOpen}
-            sendProperty={handleSearchForm} />
+            sendProperty={handleSearchForm}
+            onClick={handleClickCheckbox}
+            isShortFilm={isShortFilm} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}

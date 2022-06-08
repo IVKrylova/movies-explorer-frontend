@@ -1,4 +1,5 @@
-import { moviesOptions } from './constants.js';
+import { moviesOptions } from './constants';
+import { checkResponse } from './utils';
 
 class MoviesApi {
   constructor(moviesOptions) {
@@ -6,20 +7,12 @@ class MoviesApi {
     this.headers = moviesOptions.headers;
   }
 
-  // метод проверки ошибок
-  _checkResponse(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  }
-
   // метод получения массива с результатами поиска
   getMovies() {
     return fetch(`${this.baseUrl}`, {
       headers: this.headers,
     })
-    .then(this._checkResponse)
+    .then(checkResponse)
   }
 }
 

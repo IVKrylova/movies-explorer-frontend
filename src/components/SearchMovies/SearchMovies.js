@@ -6,7 +6,8 @@ const SearchMovies = props => {
   return(
     <section className="search-movies">
       <SearchForm sendProperty={props.sendProperty} />
-      <FilterCheckbox />
+      <FilterCheckbox onClick={props.onClick}
+        isShortFilm={props.isShortFilm} />
     </section>
   );
 }
