@@ -6,7 +6,7 @@ const useFormAndValidation = _ => {
   // хуки состояния ошибок инпутов
   const [ errors, setErrors ] = useState({});
   // хуки состояния валидности формы
-  const [ isValid, setIsValid ] = useState(true);
+  const [ isValid, setIsValid ] = useState(false);
 
   // обработчик проверки изменения инпута
   const handleChange = evt => {
