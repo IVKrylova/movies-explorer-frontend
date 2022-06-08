@@ -10,6 +10,10 @@
   padding: 10px 20px;
 }
 
+.button-more_hidden {
+  display: none;
+}
+
 .button-more__place_promo {
   margin-top: 80px;
   margin-bottom: 30px;

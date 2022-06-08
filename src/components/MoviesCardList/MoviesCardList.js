@@ -10,21 +10,22 @@ const MoviesCardList = props => {
   }
 
   return (
-    <section className="movies-cards" aria-label="Блок с фильмами">
+    <section className={`movies-cards`}
+      aria-label="Блок с фильмами">
       <ul className="movies-list">
-        {props.movies.map(movie => {
-              return ( /* ToDo: разное количество карточек для разной ширины экрана, resize */
-                <MoviesCard key={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
-                  id={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
-                  nameRU={movie.nameRU}
-                  duration={calcDuration(movie)}
-                  image={movie.image}
-                  currentUrl={props.currentUrl}
-                  idCardHovered={props.idCardHovered}
-                  onMouseOver={props.onMouseOver}
-                  onMouseOut={props.onMouseOut} />
-              );
-            })}
+        {props.movies && props.movies.map(movie => {
+          return ( /* ToDo: разное количество карточек для разной ширины экрана, resize */
+            <MoviesCard key={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
+              id={movie.movieId} /* ToDo: заменить на _id на следующем этапе */
+              nameRU={movie.nameRU}
+              duration={calcDuration(movie)}
+              image={movie.image}
+              currentUrl={props.currentUrl}
+              idCardHovered={props.idCardHovered}
+              onMouseOver={props.onMouseOver}
+              onMouseOut={props.onMouseOut} />
+          );
+        })}
       </ul>
     </section>
   );

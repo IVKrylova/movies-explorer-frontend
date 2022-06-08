@@ -3,7 +3,8 @@ import './ButtonMore.css';
 
 const ButtonMore = props => {
   return (
-    <Button buttonText={props.buttonText} buttonClassName={`button-more ${props.classModifier}`} />
+    <Button buttonText={props.buttonText}
+      buttonClassName={`button-more ${props.classModifier} ${props.movies ? '' : 'button-more_hidden'}`} />
   );
 }
 

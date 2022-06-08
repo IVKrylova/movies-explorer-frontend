@@ -11,13 +11,14 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
-import { movies } from '../../utils/constants';
 
 const App = _ => {
   // стейт бургерного меню
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   // стейт id карточки с наведенным курсором
   const [idCardHovered, setIdCardHovered] = useState('');
+  // стейт открытия страницы с поиском фильмов первый раз
+  const [isFirstOpen, setIsFirstOpen] = useState(true);
 
   // получаем текущий URL
   const location = useLocation();
@@ -60,8 +61,9 @@ const App = _ => {
             isOpenMenu={isOpenMenu}
             onClickMenu={openMenu}
             onClickButtonClose={closeMenu} />
-          <Movies movies={movies}
-            currentUrl={currentUrl} />
+          <Movies /* movies={movies} */
+            currentUrl={currentUrl}
+            isFirstOpen={isFirstOpen} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}
@@ -69,7 +71,7 @@ const App = _ => {
             isOpenMenu={isOpenMenu}
             onClickMenu={openMenu}
             onClickButtonClose={closeMenu} />
-          <SavedMovies movies={movies}
+          <SavedMovies /* movies={movies} */
             currentUrl={currentUrl}
             idCardHovered={idCardHovered}
             onMouseOver={handleMouseOverCard}

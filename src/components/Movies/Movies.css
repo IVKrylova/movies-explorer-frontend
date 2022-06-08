@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   Width: 100%;
+  align-self: start;
 }
 
 @media screen and (min-width: 1280px) {
