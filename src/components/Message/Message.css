@@ -8,3 +8,7 @@
   padding: 0;
   margin: 60px auto 0;
 }
+
+.message_hidden {
+  display: none;
+}

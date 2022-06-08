@@ -11,10 +11,13 @@ const Movies = props => {
       <SearchMovies sendProperty={props.sendProperty} />
       <Preloader />
       {props.isFirstOpen &&
-        <Message />
+        <Message message='Начните поиск'
+          movies={props.movies} />
       }
       {!props.isFirstOpen &&
         <>
+          <Message message='Ничего не найдено'
+            movies={props.movies} />
           <MoviesCardList movies={props.movies}
           currentUrl={props.currentUrl} />
           <ButtonMore buttonText={'Ещё'}

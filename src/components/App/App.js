@@ -22,6 +22,8 @@ const App = _ => {
   const [isFirstOpen, setIsFirstOpen] = useState(true);
   // стейт массива фильмов на странице поиска
   const [movies, setMovies] = useState([]);
+  // стейт переключателя короткометражек
+  const [isShortFilm, setIsShortFilm] = useState(false);
 
   // получаем текущий URL
   const location = useLocation();
@@ -51,10 +53,15 @@ const App = _ => {
   const handleSearchForm = searchRequest => {
     moviesApi.getMovies()
     .then(data => {
-      const movies = data.filter(movie => movie.nameRU.includes(searchRequest.movie));
+      const movies = data.filter(movie =>
+        movie.nameRU.toLowerCase().includes(searchRequest.movie.toLowerCase())
+      );
 
       setMovies(movies);
       setIsFirstOpen(false);
+      localStorage.setItem('movies', JSON.stringify(movies));
+      localStorage.setItem('searchRequest', searchRequest.movie);
+      localStorage.setItem('isShortFilm', isShortFilm);
     })
     .catch(err => console.log(err));
   }
