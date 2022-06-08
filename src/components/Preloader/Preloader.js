@@ -1,4 +1,4 @@
-import './Preloader.css'
+import './Preloader.css';
 
 const Preloader = props => {
   return (
@@ -10,4 +10,4 @@ const Preloader = props => {
   );
 }
 
-export default Preloader
+export default Preloader;
