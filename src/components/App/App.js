@@ -25,6 +25,8 @@ const App = _ => {
   const [movies, setMovies] = useState([]);
   // стейт переключателя короткометражек
   const [isShortFilm, setIsShortFilm] = useState(false);
+  // стейт сообщения об ошибке
+  const [errorMessage, setErrorMessage] = useState('');
 
   // получаем текущий URL
   const location = useLocation();
@@ -52,6 +54,7 @@ const App = _ => {
 
   // обработчик формы поиска
   const handleSearchForm = searchRequest => {
+    setErrorMessage('');
     moviesApi.getMovies()
     .then(data => {
       const searchMovies = filterByName(data, searchRequest.movie);
@@ -63,7 +66,10 @@ const App = _ => {
       localStorage.setItem('searchRequest', searchRequest.movie);
       localStorage.setItem('isShortFilm', isShortFilm);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      setErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+    });
   }
 
   // обработчик переключателя короткометражных фильмов
@@ -81,6 +87,7 @@ const App = _ => {
       localStorage.setItem('isShortFilm', isShortFilm);
       localStorage.setItem('movies', JSON.stringify(movies));
     } else {
+      setErrorMessage('');
       moviesApi.getMovies()
         .then(data => {
           const searchMovies = filterByName(data, localStorage.searchRequest);
@@ -90,7 +97,10 @@ const App = _ => {
           localStorage.setItem('movies', JSON.stringify(movies));
           localStorage.setItem('isShortFilm', isShortFilm);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          setErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+        });
     }
   }
 
@@ -116,7 +126,8 @@ const App = _ => {
             isFirstOpen={isFirstOpen}
             sendProperty={handleSearchForm}
             onClick={handleClickCheckbox}
-            isShortFilm={isShortFilm} />
+            isShortFilm={isShortFilm}
+            errorMessage={errorMessage} />
           <Footer />
         </Route>
         <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}

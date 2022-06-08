@@ -4,6 +4,7 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import ButtonMore from '../ButtonMore/ButtonMore';
 import Message from '../Message/Message';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const Movies = props => {
   return (
@@ -19,7 +20,9 @@ const Movies = props => {
       {!props.isFirstOpen &&
         <>
           <Message message='Ничего не найдено'
-            movies={props.movies} />
+            movies={props.movies}
+            errorMessage={props.errorMessage} />
+          <ErrorMessage errorMessage={props.errorMessage} />
           <MoviesCardList movies={props.movies}
           currentUrl={props.currentUrl} />
           <ButtonMore buttonText={'Ещё'}
