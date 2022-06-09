@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Header from '../Header/Header';
@@ -23,16 +23,26 @@ const App = _ => {
   const [isFirstOpen, setIsFirstOpen] = useState(true);
   // стейт массива фильмов на странице поиска
   const [movies, setMovies] = useState([]);
-  // стейт переключателя короткометражек
+  // стейт переключателя короткометражек на странице поиска
   const [isShortFilm, setIsShortFilm] = useState(false);
   // стейт сообщения об ошибке
   const [errorMessage, setErrorMessage] = useState('');
   // стейт загрузки ответа на запрос
   const [isLoading, setIsLoading] = useState(false);
+  // стейт переключателя короткометражек на странице сохраненных фильмов
+  const [isShortFilmSaved, setIsShortFilmSaved] = useState(false);
 
   // получаем текущий URL
   const location = useLocation();
   const currentUrl = location.pathname;
+
+  // установка начальных значений из localStorage для страницы с поиском фильмов
+  useEffect(_ => {
+    if (currentUrl === '/movies' && localStorage.movies) {
+      setMovies(JSON.parse(localStorage.movies));
+      setIsShortFilm(localStorage.isShortFilm);
+    }
+  }, []);
 
   // функция открытия бургерного меню
   const openMenu = _ => {
@@ -65,10 +75,11 @@ const App = _ => {
 
       setMovies(searchMovies);
       setIsFirstOpen(false);
+      setIsShortFilm(false);
 
-      localStorage.setItem('movies', JSON.stringify(movies));
+      localStorage.setItem('movies', JSON.stringify(searchMovies));
       localStorage.setItem('searchRequest', searchRequest.movie);
-      localStorage.setItem('isShortFilm', isShortFilm);
+      localStorage.setItem('isShortFilm', false);
     })
     .catch(err => {
       console.log(err);
@@ -79,30 +90,29 @@ const App = _ => {
 
   // обработчик переключателя короткометражных фильмов
   const handleClickCheckbox = _ => {
-    if (movies.length === 0 && !isShortFilm) {
-      setIsShortFilm(false);
-      return;
-    }
+    if (movies.length === 0) return;
 
     if (!isShortFilm) {
       const shortFilm = filterByDuration(movies);
 
       setIsShortFilm(true);
       setMovies(shortFilm);
-      localStorage.setItem('isShortFilm', isShortFilm);
-      localStorage.setItem('movies', JSON.stringify(movies));
+
+      localStorage.setItem('isShortFilm', true);
+      localStorage.setItem('movies', JSON.stringify(shortFilm));
     } else {
+      setIsShortFilm(false);
       setIsLoading(true);
       setMovies([]);
       setErrorMessage('');
+
       moviesApi.getMovies()
         .then(data => {
           const searchMovies = filterByName(data, localStorage.searchRequest);
 
-          setIsShortFilm(false);
           setMovies(searchMovies);
-          localStorage.setItem('movies', JSON.stringify(movies));
-          localStorage.setItem('isShortFilm', isShortFilm);
+          localStorage.setItem('movies', JSON.stringify(searchMovies));
+          localStorage.setItem('isShortFilm', false);
         })
         .catch(err => {
           console.log(err);

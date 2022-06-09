@@ -15,14 +15,15 @@ const Movies = props => {
     <main className="movies">
       <SearchMovies sendProperty={props.sendProperty}
         onClick={props.onClick}
-        isShortFilm={props.isShortFilm} />
+        isShortFilm={props.isShortFilm}
+        currentUrl={props.currentUrl} />
       <Preloader isLoading={props.isLoading} />
-      {props.isFirstOpen &&
+      {(props.isFirstOpen && !localStorage.movies) &&
         <Message message='Начните поиск'
           movies={props.movies}
           isLoading={props.isLoading} />
       }
-      {!props.isFirstOpen &&
+      {((props.isFirstOpen && localStorage.movies) || !props.isFirstOpen) &&
         <>
           <Message message='Ничего не найдено'
             movies={props.movies}
