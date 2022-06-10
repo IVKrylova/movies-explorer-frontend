@@ -2,9 +2,9 @@ import { moviesOptions } from './constants';
 import { checkResponse } from './utils';
 
 class MoviesApi {
-  constructor(moviesOptions) {
-    this.baseUrl = moviesOptions.baseUrl;
-    this.headers = moviesOptions.headers;
+  constructor(options) {
+    this.baseUrl = options.baseUrl;
+    this.headers = options.headers;
   }
 
   // метод получения массива с результатами поиска

@@ -40,7 +40,8 @@ const SearchForm = props => {
         isValid={isValid}
         isPressed={isPressed} />
       <FormButton buttonText='Поиск'
-        classNameButton='search-form__button' />
+        classNameButton='search-form__button'
+        currentUrl={props.currentUrl} />
     </form>
   );
 }

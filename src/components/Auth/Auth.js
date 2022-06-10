@@ -13,13 +13,13 @@ const Auth = props => {
         classModifier="title_place_auth" />
       <form className="authorization__form" name={`${props.nameForm}-form`}
         onSubmit={props.currentUrl === '/signup' ? props.onSubmitRegister : props.onSubmitLogin}
-        noValidate
-        id={props.idForm}>
+        noValidate>
         {props.children}
-        <ErrorMessage errorMessage="" /> {/* ToDo: если есть ошибка, то выводим ошибку, если нет, то пустую строку */}
+        <ErrorMessage errorMessage={props.errorMessage} />
         <FormButton classNameButton="authorization__form-button"
           buttonText={props.buttonText}
-          isValid={props.isValid} />
+          isValid={props.isValid}
+          currentUrl={props.currentUrl} />
       </form>
       <p className="authorization__text">
         {props.authorizationText}{'\u00A0'}

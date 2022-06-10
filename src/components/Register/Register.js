@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Auth from '../Auth/Auth';
 import FormInput from '../FormInput/FormInput';
 import FormErrorMessage from '../FormErrorMessage/FormErrorMessage';
@@ -23,6 +24,11 @@ const Register = props => {
     });
   }
 
+  // сброс значений инпутов формы
+  useEffect(_ => {
+    resetForm();
+  }, [props.property]);
+
   return (
     <Auth titleText="Добро пожаловать!"
       nameForm="register"
@@ -32,7 +38,8 @@ const Register = props => {
       authorizationPatch="/signin"
       onSubmitRegister={handleSubmit}
       currentUrl={props.currentUrl}
-      isValid={isValid}>
+      isValid={isValid}
+      errorMessage={props.errorMessage}>
       {/* Поле для имени */}
       <label className="authorization__form-label">Имя</label>
       <FormInput type="text"

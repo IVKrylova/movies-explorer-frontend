@@ -1,5 +1,12 @@
 // URL для обращения к собственной БД
-export const MAIN_URL = 'api.movies.ivkrylova.nomoredomains.xyz';
+export const MAIN_URL = 'https://api.movies.ivkrylova.nomoredomains.xyz';
+// объект с настройками для собственной API
+export const mainOptions = {
+  baseUrl: MAIN_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}
 
 // URL для обращения к БД с фильмами beatfilm-movies
 export const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
@@ -9,7 +16,7 @@ export const IMAGE_URL = 'https://api.nomoreparties.co/.';
 export const moviesOptions = {
   baseUrl: MOVIES_URL,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   }
 }
 

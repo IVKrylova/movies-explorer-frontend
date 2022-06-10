@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -13,6 +13,7 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import { moviesApi } from '../../utils/MoviesApi';
 import { filterByName, filterByDuration } from '../../utils/utils';
+import { mainApi } from '../../utils/MainApi';
 
 const App = _ => {
   // стейт бургерного меню
@@ -29,12 +30,36 @@ const App = _ => {
   const [errorMessage, setErrorMessage] = useState('');
   // стейт загрузки ответа на запрос
   const [isLoading, setIsLoading] = useState(false);
+  // стейт регистрации нового пользователя
+  const [isRegistred, setIsRegistred] = useState(false);
   // стейт переключателя короткометражек на странице сохраненных фильмов
   const [isShortFilmSaved, setIsShortFilmSaved] = useState(false);
 
   // получаем текущий URL
   const location = useLocation();
   const currentUrl = location.pathname;
+  // получаем доступ к объекту history
+  const history = useHistory();
+
+  // обработчик формы регистрации
+  const handleRegisterForm = props => {
+    setErrorMessage('');
+    mainApi.register(props.name, props.email, props.password)
+      .then(_ => {
+        setIsRegistred(true);
+      })
+      .catch(err => {
+        console.log(err);
+        setErrorMessage('При регистрации пользователя произошла ошибка');
+      })
+  }
+
+  /* // настройка переадресации на страницу фильмов после удачной регистрации
+  useEffect(_ => {
+    if (isRegistred) {
+      history.push('/movies');
+    }
+  }, [isRegistred]); */
 
   // установка начальных значений из localStorage для страницы с поиском фильмов
   useEffect(_ => {
@@ -83,7 +108,7 @@ const App = _ => {
     })
     .catch(err => {
       console.log(err);
-      setErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+      setErrorMessage(err.message);
     })
     .finally(_ => setIsLoading(false));
   }
@@ -169,7 +194,9 @@ const App = _ => {
           <Profile />
         </Route>
         <Route path="/signup">
-          <Register currentUrl={currentUrl} />
+          <Register currentUrl={currentUrl}
+            sendProperty={handleRegisterForm}
+            errorMessage={errorMessage} />
         </Route>
         <Route path="/signin">
           <Login />
