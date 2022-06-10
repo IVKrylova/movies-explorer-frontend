@@ -1,11 +1,6 @@
 import './FormInput.css';
 
 const FormInput = props => {
-  // обработчик изменения инпута
-  const handleChange = _ => {
-    // ToDo: перенести обработчик в хук валидации формы
-  }
-
   return (
     <input type={props.type}
       className={`form-input ${props.classModifier}`}
@@ -15,7 +10,8 @@ const FormInput = props => {
       maxLength={props.maxLength}
       value={props.value}
       required
-      onChange={handleChange} />
+      onChange={props.onChange}
+      pattern={props.pattern} />
   );
 }
 

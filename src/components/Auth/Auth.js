@@ -11,19 +11,20 @@ const Auth = props => {
       <Logo classModifier="logo_place_auth" />
       <Title titleText={props.titleText}
         classModifier="title_place_auth" />
-      <form className="authorization__form" name={`${props.nameForm}-form`}>
+      <form className="authorization__form" name={`${props.nameForm}-form`}
+        onSubmit={props.currentUrl === '/signup' ? props.onSubmitRegister : props.onSubmitLogin}
+        noValidate
+        id={props.idForm}>
         {props.children}
         <ErrorMessage errorMessage="" /> {/* ToDo: если есть ошибка, то выводим ошибку, если нет, то пустую строку */}
         <FormButton classNameButton="authorization__form-button"
-          buttonText={props.buttonText} />
+          buttonText={props.buttonText}
+          isValid={props.isValid} />
       </form>
       <p className="authorization__text">
         {props.authorizationText}{'\u00A0'}
         <Link to={props.authorizationPatch} className="authorization__link">{props.authorizationLink}</Link>
       </p>
-
-
-
     </main>
   );
 }

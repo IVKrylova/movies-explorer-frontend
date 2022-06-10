@@ -162,14 +162,14 @@ const App = _ => {
           <Footer />
         </Route>
         <Route path="/profile"> {/* ToDo ProtectedRoute */}
-         <Header currentUrl={currentUrl}
-          isOpenMenu={isOpenMenu}
+          <Header currentUrl={currentUrl}
+            isOpenMenu={isOpenMenu}
             onClickMenu={openMenu}
             onClickButtonClose={closeMenu} />
           <Profile />
         </Route>
         <Route path="/signup">
-          <Register />
+          <Register currentUrl={currentUrl} />
         </Route>
         <Route path="/signin">
           <Login />
