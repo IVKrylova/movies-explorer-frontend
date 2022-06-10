@@ -32,6 +32,8 @@ const App = _ => {
   const [isLoading, setIsLoading] = useState(false);
   // стейт регистрации нового пользователя
   const [isRegistred, setIsRegistred] = useState(false);
+  // стейт авторизации пользователя
+  const [loggedIn, setLoggedIn] = useState(false);
   // стейт переключателя короткометражек на странице сохраненных фильмов
   const [isShortFilmSaved, setIsShortFilmSaved] = useState(false);
 
@@ -52,6 +54,11 @@ const App = _ => {
         console.log(err);
         setErrorMessage('При регистрации пользователя произошла ошибка');
       })
+  }
+
+  // обработчик формы авторизации
+  const handleLoginForm = props => {
+
   }
 
   /* // настройка переадресации на страницу фильмов после удачной регистрации
@@ -196,10 +203,14 @@ const App = _ => {
         <Route path="/signup">
           <Register currentUrl={currentUrl}
             sendProperty={handleRegisterForm}
-            errorMessage={errorMessage} />
+            errorMessage={errorMessage}
+            isRegistred={isRegistred} />
         </Route>
         <Route path="/signin">
-          <Login />
+          <Login currentUrl={currentUrl}
+            sendProperty={handleLoginForm}
+            errorMessage={errorMessage}
+            loggedIn={loggedIn} />
         </Route>
         <Route path="*">
           <PageNotFound />

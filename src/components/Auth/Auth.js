@@ -4,8 +4,14 @@ import Title from '../Title/Title';
 import { Link } from 'react-router-dom';
 import './Auth.css';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { useEffect } from 'react';
 
 const Auth = props => {
+  // сброс значений инпутов формы
+  useEffect(_ => {
+    props.onResetForm();
+  }, [props.isRegistred, props.loggedIn]);
+
   return (
     <main className="authorization">
       <Logo classModifier="logo_place_auth" />
