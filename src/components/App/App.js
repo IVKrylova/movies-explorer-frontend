@@ -51,6 +51,27 @@ const App = _ => {
     }
   }, []);
 
+  const logInApp = (password, email) => {
+    mainApi.authorize(password, email)
+      .then(data => {
+        // сохраняем токен в localStorage
+        localStorage.setItem('token', data.token);
+        setLoggedIn(true);
+      })
+      .catch(err => {
+        console.log(err);
+        if (err.code === 404) {
+          setErrorMessage('Вы ввели неправильный логин или пароль');
+        } else if (err.code === 401) {
+          setErrorMessage('При авторизации произошла ошибка. Токен не передан или передан не в том формате');
+        } else if (err.code === 403) {
+          setErrorMessage('При авторизации произошла ошибка. Переданный токен некорректен');
+        } else {
+          setErrorMessage('При авторизации произошла ошибка');
+        }
+      })
+  }
+
   // обработчик формы регистрации
   const handleRegisterForm = props => {
     setErrorMessage('');
@@ -60,13 +81,16 @@ const App = _ => {
       })
       .catch(err => {
         console.log(err);
-        setErrorMessage('При регистрации пользователя произошла ошибка');
+        err.code === 409 ?
+          setErrorMessage('Пользователь с таким email уже существует') :
+          setErrorMessage('При регистрации пользователя произошла ошибка');
       })
   }
 
   // обработчик формы авторизации
   const handleLoginForm = props => {
-
+    setErrorMessage('');
+    logInApp(props.password, props.email);
   }
 
   /* // настройка переадресации на страницу фильмов после удачной регистрации
