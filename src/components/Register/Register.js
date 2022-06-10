@@ -49,7 +49,8 @@ const Register = props => {
         onChange={handleChange}
         pattern="^[a-zA-Zа-яА-Я\s-]+$" />
       <FormErrorMessage isValid={isValid}
-        errorMessage={errors.name} />
+        errorMessage={errors.name}
+        currentUrl={props.currentUrl} />
       {/* Поле для email */}
       <label className="authorization__form-label">E-mail</label>
       <FormInput type="email"
@@ -60,7 +61,8 @@ const Register = props => {
         value={values.email || ''}
         onChange={handleChange} />
       <FormErrorMessage isValid={isValid}
-        errorMessage={emailErrorMessage} />
+        errorMessage={emailErrorMessage}
+        currentUrl={props.currentUrl} />
       {/* Поле для пароля */}
       <label className="authorization__form-label">Пароль</label>
       <FormInput type="password"
@@ -71,7 +73,8 @@ const Register = props => {
         value={values.password || ''}
         onChange={handleChange} />
       <FormErrorMessage isValid={isValid}
-        errorMessage={errors.password} />
+        errorMessage={errors.password}
+        currentUrl={props.currentUrl} />
     </Auth>
     );
   }

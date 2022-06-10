@@ -38,7 +38,8 @@ const SearchForm = props => {
         onChange={handleChange} />
       <FormErrorMessage errorMessage='Нужно ввести ключевое слово'
         isValid={isValid}
-        isPressed={isPressed} />
+        isPressed={isPressed}
+        currentUrl={props.currentUrl} />
       <FormButton buttonText='Поиск'
         classNameButton='search-form__button'
         currentUrl={props.currentUrl} />
