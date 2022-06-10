@@ -34,14 +34,22 @@ const App = _ => {
   const [isRegistred, setIsRegistred] = useState(false);
   // стейт авторизации пользователя
   const [loggedIn, setLoggedIn] = useState(false);
-  // стейт переключателя короткометражек на странице сохраненных фильмов
-  const [isShortFilmSaved, setIsShortFilmSaved] = useState(false);
 
   // получаем текущий URL
   const location = useLocation();
   const currentUrl = location.pathname;
   // получаем доступ к объекту history
   const history = useHistory();
+
+  // установка начальных значений из localStorage для страницы с поиском фильмов
+  useEffect(_ => {
+    if (currentUrl === '/movies' && localStorage.movies) {
+      setMovies(JSON.parse(localStorage.movies));
+
+      if (localStorage.isShortFilm === 'true') setIsShortFilm(true);
+      if (localStorage.isShortFilm === 'false') setIsShortFilm(false);
+    }
+  }, []);
 
   // обработчик формы регистрации
   const handleRegisterForm = props => {
@@ -67,14 +75,6 @@ const App = _ => {
       history.push('/movies');
     }
   }, [isRegistred]); */
-
-  // установка начальных значений из localStorage для страницы с поиском фильмов
-  useEffect(_ => {
-    if (currentUrl === '/movies' && localStorage.movies) {
-      setMovies(JSON.parse(localStorage.movies));
-      setIsShortFilm(localStorage.isShortFilm);
-    }
-  }, []);
 
   // функция открытия бургерного меню
   const openMenu = _ => {
