@@ -51,12 +51,21 @@
 .profile__form-button {
   width: 260px;
   margin: 380px 0 40px;
-  /* position: absolute; */
   bottom: 0;
 }
 
 .profile__form-button_invisible {
   display: none;
+}
+
+.profile__form-button_disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+}
+
+.profile__form-button_disabled:hover {
+  cursor: default;
+  opacity: 1;
 }
 
 .buttons-list {
@@ -66,8 +75,7 @@
   padding: 0;
   list-style-type: none;
   align-items: center;
-  row-gap: 16px;/*
-  position: absolute; */
+  row-gap: 16px;
   bottom: 0;
 }
 
@@ -93,7 +101,7 @@
   color: #ee3465;
 }
 
-.buttons_invisible {
+.buttons-list_invisible {
   display: none;
 }
 

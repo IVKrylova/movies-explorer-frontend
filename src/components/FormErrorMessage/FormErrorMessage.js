@@ -3,7 +3,7 @@ import './FormErrorMessage.css';
 const FormErrorMessage = props => {
   return (
     <>
-      {(props.currentUrl === '/signin' || props.currentUrl === '/signup') &&
+      {(props.currentUrl === '/signin' || props.currentUrl === '/signup' || props.currentUrl === '/profile') &&
         <span className={`input-error ${!props.isValid ? 'input-error_active' : ''}`}>
           {!props.isValid && props.errorMessage}
         </span>

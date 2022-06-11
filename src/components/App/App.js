@@ -38,6 +38,8 @@ const App = _ => {
   const [loggedIn, setLoggedIn] = useState(false);
   // стейт данных о пользователе
   const [currentUser, setCurrentUser] = useState({ _id: '', email: '', name: ''});
+  // стейт кнопки Редактировать
+  const [isButtonEditPressed, setIsButtonEditPressed] = useState(false);
 
   // получаем текущий URL
   const location = useLocation();
@@ -245,6 +247,14 @@ const App = _ => {
     }
   }
 
+  // обработчик клика по кнопке редактировать
+  const handleClickEdit = _ => setIsButtonEditPressed(true);
+
+  // обработчик формы редактирования профиля
+  const handleEditProfile = props => {
+    setIsButtonEditPressed(false);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app-page">
@@ -303,7 +313,11 @@ const App = _ => {
                   isOpenMenu={isOpenMenu}
                   onClickMenu={openMenu}
                   onClickButtonClose={closeMenu} />
-                <Profile />
+                <Profile sendProperty={handleEditProfile}
+                  errorMessage={errorMessage}
+                  currentUrl={currentUrl}
+                  onClickEdit={handleClickEdit}
+                  isButtonEditPressed={isButtonEditPressed} />
               </>
             }
           />
