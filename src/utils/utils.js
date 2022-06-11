@@ -17,3 +17,8 @@ export const checkResponse = res => {
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 }
+
+// функция получения кода ошибки
+export const getErrorCode = err => {
+  return err.split(' ')[1];
+}

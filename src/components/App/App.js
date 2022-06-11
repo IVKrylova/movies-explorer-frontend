@@ -12,7 +12,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import { moviesApi } from '../../utils/MoviesApi';
-import { filterByName, filterByDuration } from '../../utils/utils';
+import { filterByName, filterByDuration, getErrorCode } from '../../utils/utils';
 import { mainApi } from '../../utils/MainApi';
 
 const App = _ => {
@@ -51,8 +51,9 @@ const App = _ => {
     }
   }, []);
 
-  const logInApp = (password, email) => {
-    mainApi.authorize(password, email)
+  // функция авторизации пользователя
+  function logInApp(password, email) {
+    mainApi.authorize(password,email)
       .then(data => {
         // сохраняем токен в localStorage
         localStorage.setItem('token', data.token);
@@ -60,11 +61,13 @@ const App = _ => {
       })
       .catch(err => {
         console.log(err);
-        if (err.code === 404) {
+
+        const errorCode = getErrorCode(err);
+        if (errorCode === '404') {
           setErrorMessage('Вы ввели неправильный логин или пароль');
-        } else if (err.code === 401) {
+        } else if (errorCode === '401') {
           setErrorMessage('При авторизации произошла ошибка. Токен не передан или передан не в том формате');
-        } else if (err.code === 403) {
+        } else if (errorCode === '403') {
           setErrorMessage('При авторизации произошла ошибка. Переданный токен некорректен');
         } else {
           setErrorMessage('При авторизации произошла ошибка');
@@ -76,12 +79,15 @@ const App = _ => {
   const handleRegisterForm = props => {
     setErrorMessage('');
     mainApi.register(props.name, props.email, props.password)
-      .then(_ => {
+      .then(data => {
         setIsRegistred(true);
+        logInApp(props.password, data.email);
       })
       .catch(err => {
         console.log(err);
-        err.code === 409 ?
+
+        const errorCode = getErrorCode(err);
+        errorCode === '409' ?
           setErrorMessage('Пользователь с таким email уже существует') :
           setErrorMessage('При регистрации пользователя произошла ошибка');
       })
@@ -93,12 +99,12 @@ const App = _ => {
     logInApp(props.password, props.email);
   }
 
-  /* // настройка переадресации на страницу фильмов после удачной регистрации
+  // настройка переадресации на страницу фильмов после удачной регистрации или авторизации
   useEffect(_ => {
-    if (isRegistred) {
+    if (isRegistred || loggedIn) {
       history.push('/movies');
     }
-  }, [isRegistred]); */
+  }, [isRegistred, loggedIn]);
 
   // функция открытия бургерного меню
   const openMenu = _ => {
