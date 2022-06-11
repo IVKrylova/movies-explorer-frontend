@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -34,6 +35,8 @@ const App = _ => {
   const [isRegistred, setIsRegistred] = useState(false);
   // стейт авторизации пользователя
   const [loggedIn, setLoggedIn] = useState(false);
+  // стейт данных о пользователе
+  const [currentUser, setCurrentUser] = useState({ _id: '', email: '', name: ''});
 
   // получаем текущий URL
   const location = useLocation();
@@ -51,6 +54,17 @@ const App = _ => {
     }
   }, []);
 
+  // функция получения данных о пользователе
+  const getUserInfo = token => {
+    mainApi.getUserInfo(token)
+      .then(data => setCurrentUser({ _id: data._id, email: data.email, name: data.name }))
+      .catch(err => {
+        console.log(err);
+
+        setErrorMessage('Произошла ошибка');
+      })
+  }
+
   // функция авторизации пользователя
   function logInApp(password, email) {
     mainApi.authorize(password,email)
@@ -58,6 +72,7 @@ const App = _ => {
         // сохраняем токен в localStorage
         localStorage.setItem('token', data.token);
         setLoggedIn(true);
+        getUserInfo(data.token);
       })
       .catch(err => {
         console.log(err);
@@ -185,68 +200,70 @@ const App = _ => {
   }
 
   return (
-    <div className="app-page">
-      <Helmet htmlAttributes={{ lang : 'ru' }} />
-      <Switch>
-        <Route exact path="/"> {/* ToDo ProtectedRoute */}
-          <Header currentUrl={currentUrl}
-            isOpenMenu={isOpenMenu}
-            onClickMenu={openMenu}
-            onClickButtonClose={closeMenu} />
-          <Main />
-          <Footer />
-        </Route>
-        <Route path="/movies"> {/* ToDo ProtectedRoute */}
-          <Header currentUrl={currentUrl}
-            isOpenMenu={isOpenMenu}
-            onClickMenu={openMenu}
-            onClickButtonClose={closeMenu} />
-          <Movies movies={movies}
-            currentUrl={currentUrl}
-            isFirstOpen={isFirstOpen}
-            sendProperty={handleSearchForm}
-            onClick={handleClickCheckbox}
-            isShortFilm={isShortFilm}
-            errorMessage={errorMessage}
-            isLoading={isLoading} />
-          <Footer />
-        </Route>
-        <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}
-          <Header currentUrl={currentUrl}
-            isOpenMenu={isOpenMenu}
-            onClickMenu={openMenu}
-            onClickButtonClose={closeMenu} />
-          <SavedMovies /* movies={movies} */
-            currentUrl={currentUrl}
-            idCardHovered={idCardHovered}
-            onMouseOver={handleMouseOverCard}
-            onMouseOut={handleMouseOutCard} />
-          <Footer />
-        </Route>
-        <Route path="/profile"> {/* ToDo ProtectedRoute */}
-          <Header currentUrl={currentUrl}
-            isOpenMenu={isOpenMenu}
-            onClickMenu={openMenu}
-            onClickButtonClose={closeMenu} />
-          <Profile />
-        </Route>
-        <Route path="/signup">
-          <Register currentUrl={currentUrl}
-            sendProperty={handleRegisterForm}
-            errorMessage={errorMessage}
-            isRegistred={isRegistred} />
-        </Route>
-        <Route path="/signin">
-          <Login currentUrl={currentUrl}
-            sendProperty={handleLoginForm}
-            errorMessage={errorMessage}
-            loggedIn={loggedIn} />
-        </Route>
-        <Route path="*">
-          <PageNotFound />
-        </Route>
-      </Switch>
-    </div>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="app-page">
+        <Helmet htmlAttributes={{ lang : 'ru' }} />
+        <Switch>
+          <Route exact path="/"> {/* ToDo ProtectedRoute */}
+            <Header currentUrl={currentUrl}
+              isOpenMenu={isOpenMenu}
+              onClickMenu={openMenu}
+              onClickButtonClose={closeMenu} />
+            <Main />
+            <Footer />
+          </Route>
+          <Route path="/movies"> {/* ToDo ProtectedRoute */}
+            <Header currentUrl={currentUrl}
+              isOpenMenu={isOpenMenu}
+              onClickMenu={openMenu}
+              onClickButtonClose={closeMenu} />
+            <Movies movies={movies}
+              currentUrl={currentUrl}
+              isFirstOpen={isFirstOpen}
+              sendProperty={handleSearchForm}
+              onClick={handleClickCheckbox}
+              isShortFilm={isShortFilm}
+              errorMessage={errorMessage}
+              isLoading={isLoading} />
+            <Footer />
+          </Route>
+          <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}
+            <Header currentUrl={currentUrl}
+              isOpenMenu={isOpenMenu}
+              onClickMenu={openMenu}
+              onClickButtonClose={closeMenu} />
+            <SavedMovies /* movies={movies} */
+              currentUrl={currentUrl}
+              idCardHovered={idCardHovered}
+              onMouseOver={handleMouseOverCard}
+              onMouseOut={handleMouseOutCard} />
+            <Footer />
+          </Route>
+          <Route path="/profile"> {/* ToDo ProtectedRoute */}
+            <Header currentUrl={currentUrl}
+              isOpenMenu={isOpenMenu}
+              onClickMenu={openMenu}
+              onClickButtonClose={closeMenu} />
+            <Profile />
+          </Route>
+          <Route path="/signup">
+            <Register currentUrl={currentUrl}
+              sendProperty={handleRegisterForm}
+              errorMessage={errorMessage}
+              isRegistred={isRegistred} />
+          </Route>
+          <Route path="/signin">
+            <Login currentUrl={currentUrl}
+              sendProperty={handleLoginForm}
+              errorMessage={errorMessage}
+              loggedIn={loggedIn} />
+          </Route>
+          <Route path="*">
+            <PageNotFound />
+          </Route>
+        </Switch>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 
