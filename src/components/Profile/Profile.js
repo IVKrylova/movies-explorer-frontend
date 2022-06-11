@@ -92,7 +92,9 @@ const Profile = props => {
           </button>
         </li>
         <li>
-          <button type="button" className="buttons-list__button buttons-list__button_color_red">Выйти из аккаунта</button>
+          <button type="button" className="buttons-list__button buttons-list__button_color_red" onClick={props.onExit}>
+            Выйти из аккаунта
+          </button>
         </li>
       </ul>
     </main>

@@ -255,6 +255,14 @@ const App = _ => {
     setIsButtonEditPressed(false);
   }
 
+  // обработчик выхода из приложения
+  const handleExit = _ => {
+    localStorage.clear();
+    setCurrentUser({ _id: '', email: '', name: ''});
+    setLoggedIn(false);
+    history.push('/');
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app-page">
@@ -317,7 +325,8 @@ const App = _ => {
                   errorMessage={errorMessage}
                   currentUrl={currentUrl}
                   onClickEdit={handleClickEdit}
-                  isButtonEditPressed={isButtonEditPressed} />
+                  isButtonEditPressed={isButtonEditPressed}
+                  onExit={handleExit} />
               </>
             }
           />
