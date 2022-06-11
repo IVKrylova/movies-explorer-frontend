@@ -1,13 +1,18 @@
+import { useContext } from 'react';
 import './Profile.css';
 import Title from '../Title/Title';
 import FormInpit from '../FormInput/FormInput';
 import FormButton from '../FormButton/FormButton';
 import FormErrorMessage from '../FormErrorMessage/FormErrorMessage';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const Profile = _ => {
+  // подписываемся на контекст CurrentUserContext
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <main className="profile">
-      <Title titleText="Привет, Ирина!" />
+      <Title titleText={`Привет, ${currentUser.name}!`} />
       <form className="profile__form" name="profile__form">
         {/* Поле для имени */}
         <fieldset className="profile__form-fieldset">
