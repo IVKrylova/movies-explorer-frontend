@@ -45,6 +45,9 @@ const App = _ => {
   // получаем доступ к объекту history
   const history = useHistory();
 
+  // проверяем токен при загрузке приложения
+  useEffect(_ => tokenCheck(), []);
+
   // установка начальных значений из localStorage для страницы с поиском фильмов
   useEffect(_ => {
     if (currentUrl === '/movies' && localStorage.movies) {
@@ -55,16 +58,23 @@ const App = _ => {
     }
   }, []);
 
-  // функция получения данных о пользователе
-  const getUserInfo = token => {
-    mainApi.getUserInfo(token)
-      .then(data => setCurrentUser({ _id: data._id, email: data.email, name: data.name }))
+  // загрузка информации о пользователе с сервера
+  useEffect(_ => {
+    if (localStorage.token) {
+      mainApi.getUserInfo(localStorage.token)
+      .then(data => {
+        // записываем информацию в контекст
+        setCurrentUser({ _id: data.data._id, email: data.data.email, name: data.data.name });
+        // добавляем email в localStorage
+        localStorage.setItem('email', data.data.email);
+      })
       .catch(err => {
         console.log(err);
 
         setErrorMessage('Произошла ошибка');
       })
-  }
+    }
+  }, [localStorage.token]);
 
   // функция авторизации пользователя
   function logInApp(password, email) {
@@ -73,7 +83,6 @@ const App = _ => {
         // сохраняем токен в localStorage
         localStorage.setItem('token', data.token);
         setLoggedIn(true);
-        getUserInfo(data.token);
       })
       .catch(err => {
         console.log(err);
@@ -89,6 +98,28 @@ const App = _ => {
           setErrorMessage('При авторизации произошла ошибка');
         }
       })
+  }
+
+  // функция проверки токена
+  function tokenCheck() {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      // проверяем данные о пользователе по токену
+      mainApi.sendToken(token)
+        .then(data => {
+          const email = data.data.email;
+
+          if (email === localStorage.getItem('email')) {
+            setLoggedIn(true);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+
+          setErrorMessage('Произошла ошибка');
+        })
+    }
   }
 
   // обработчик формы регистрации
