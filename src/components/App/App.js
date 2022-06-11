@@ -48,6 +48,13 @@ const App = _ => {
   // проверяем токен при загрузке приложения
   useEffect(_ => tokenCheck(), []);
 
+  // проверяем, авторизирован ли пользователь и загружаем приложение
+  useEffect(_ => {
+    if (loggedIn) {
+      history.push('/movies');
+    }
+  }, [loggedIn]);
+
   // установка начальных значений из localStorage для страницы с поиском фильмов
   useEffect(_ => {
     if (currentUrl === '/movies' && localStorage.movies) {
@@ -100,6 +107,10 @@ const App = _ => {
       })
   }
 
+
+//console.log(loggedIn)
+
+
   // функция проверки токена
   function tokenCheck() {
     const token = localStorage.getItem('token');
@@ -110,8 +121,15 @@ const App = _ => {
         .then(data => {
           const email = data.data.email;
 
+          //console.log(email)
+         // console.log(localStorage.getItem('email'))
+
           if (email === localStorage.getItem('email')) {
+
+//console.log(loggedIn)
             setLoggedIn(true);
+
+  //          console.log(loggedIn)
           }
         })
         .catch(err => {
@@ -121,6 +139,10 @@ const App = _ => {
         })
     }
   }
+
+
+//console.log(loggedIn)
+
 
   // обработчик формы регистрации
   const handleRegisterForm = props => {
@@ -146,12 +168,19 @@ const App = _ => {
     logInApp(props.password, props.email);
   }
 
-  // настройка переадресации на страницу фильмов после удачной регистрации или авторизации
+  // настройка переадресации на страницу фильмов после удачной регистрации
   useEffect(_ => {
-    if (isRegistred || loggedIn) {
+    if (isRegistred) {
       history.push('/movies');
     }
-  }, [isRegistred, loggedIn]);
+  }, [isRegistred]);
+
+    // настройка переадресации на страницу фильмов после удачной авторизации
+    useEffect(_ => {
+      if (loggedIn && currentUrl === './signin') {
+        history.push('/movies');
+      }
+    }, [loggedIn]);
 
   // функция открытия бургерного меню
   const openMenu = _ => {
