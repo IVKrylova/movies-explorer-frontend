@@ -15,6 +15,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import { moviesApi } from '../../utils/MoviesApi';
 import { filterByName, filterByDuration, getErrorCode } from '../../utils/utils';
 import { mainApi } from '../../utils/MainApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 const App = _ => {
   // стейт бургерного меню
@@ -204,7 +205,7 @@ const App = _ => {
       <div className="app-page">
         <Helmet htmlAttributes={{ lang : 'ru' }} />
         <Switch>
-          <Route exact path="/"> {/* ToDo ProtectedRoute */}
+          <Route exact path="/">
             <Header currentUrl={currentUrl}
               isOpenMenu={isOpenMenu}
               onClickMenu={openMenu}
@@ -212,40 +213,55 @@ const App = _ => {
             <Main />
             <Footer />
           </Route>
-          <Route path="/movies"> {/* ToDo ProtectedRoute */}
-            <Header currentUrl={currentUrl}
-              isOpenMenu={isOpenMenu}
-              onClickMenu={openMenu}
-              onClickButtonClose={closeMenu} />
-            <Movies movies={movies}
-              currentUrl={currentUrl}
-              isFirstOpen={isFirstOpen}
-              sendProperty={handleSearchForm}
-              onClick={handleClickCheckbox}
-              isShortFilm={isShortFilm}
-              errorMessage={errorMessage}
-              isLoading={isLoading} />
-            <Footer />
-          </Route>
-          <Route path="/saved-movies"> {/* ToDo ProtectedRoute */}
-            <Header currentUrl={currentUrl}
-              isOpenMenu={isOpenMenu}
-              onClickMenu={openMenu}
-              onClickButtonClose={closeMenu} />
-            <SavedMovies /* movies={movies} */
-              currentUrl={currentUrl}
-              idCardHovered={idCardHovered}
-              onMouseOver={handleMouseOverCard}
-              onMouseOut={handleMouseOutCard} />
-            <Footer />
-          </Route>
-          <Route path="/profile"> {/* ToDo ProtectedRoute */}
-            <Header currentUrl={currentUrl}
-              isOpenMenu={isOpenMenu}
-              onClickMenu={openMenu}
-              onClickButtonClose={closeMenu} />
-            <Profile />
-          </Route>
+          <ProtectedRoute path="/movies"
+            loggedIn={loggedIn}
+            component={
+              <>
+                <Header currentUrl={currentUrl}
+                  isOpenMenu={isOpenMenu}
+                  onClickMenu={openMenu}
+                  onClickButtonClose={closeMenu} />
+                <Movies movies={movies}
+                  currentUrl={currentUrl}
+                  isFirstOpen={isFirstOpen}
+                  sendProperty={handleSearchForm}
+                  onClick={handleClickCheckbox}
+                  isShortFilm={isShortFilm}
+                  errorMessage={errorMessage}
+                  isLoading={isLoading} />
+                <Footer />
+              </>
+            }
+          />
+          <ProtectedRoute path="/saved-movies"
+            loggedIn={loggedIn}
+            component={
+              <>
+                <Header currentUrl={currentUrl}
+                  isOpenMenu={isOpenMenu}
+                  onClickMenu={openMenu}
+                  onClickButtonClose={closeMenu} />
+                <SavedMovies /* movies={movies} */
+                  currentUrl={currentUrl}
+                  idCardHovered={idCardHovered}
+                  onMouseOver={handleMouseOverCard}
+                  onMouseOut={handleMouseOutCard} />
+                <Footer />
+              </>
+            }
+          />
+          <ProtectedRoute path="/profile"
+            loggedIn={loggedIn}
+            component={
+              <>
+                <Header currentUrl={currentUrl}
+                  isOpenMenu={isOpenMenu}
+                  onClickMenu={openMenu}
+                  onClickButtonClose={closeMenu} />
+                <Profile />
+              </>
+            }
+          />
           <Route path="/signup">
             <Register currentUrl={currentUrl}
               sendProperty={handleRegisterForm}
