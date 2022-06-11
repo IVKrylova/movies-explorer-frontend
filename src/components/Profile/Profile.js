@@ -6,6 +6,7 @@ import FormButton from '../FormButton/FormButton';
 import FormErrorMessage from '../FormErrorMessage/FormErrorMessage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
+
 const Profile = _ => {
   // подписываемся на контекст CurrentUserContext
   const currentUser = useContext(CurrentUserContext);

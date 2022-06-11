@@ -107,10 +107,6 @@ const App = _ => {
       })
   }
 
-
-//console.log(loggedIn)
-
-
   // функция проверки токена
   function tokenCheck() {
     const token = localStorage.getItem('token');
@@ -121,15 +117,8 @@ const App = _ => {
         .then(data => {
           const email = data.data.email;
 
-          //console.log(email)
-         // console.log(localStorage.getItem('email'))
-
           if (email === localStorage.getItem('email')) {
-
-//console.log(loggedIn)
             setLoggedIn(true);
-
-  //          console.log(loggedIn)
           }
         })
         .catch(err => {
@@ -139,10 +128,6 @@ const App = _ => {
         })
     }
   }
-
-
-//console.log(loggedIn)
-
 
   // обработчик формы регистрации
   const handleRegisterForm = props => {
