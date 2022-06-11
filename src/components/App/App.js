@@ -252,7 +252,24 @@ const App = _ => {
 
   // обработчик формы редактирования профиля
   const handleEditProfile = props => {
-    setIsButtonEditPressed(false);
+    const token = localStorage.getItem('token');
+
+    /* setIsButtonEditPressed(false); */
+    setErrorMessage('');
+    mainApi.editProfileInfo(props.name, props.email, token )
+      .then(data => {
+        setCurrentUser({ _id: data.data._id, email: data.data.email, name: data.data.name});
+        localStorage.setItem('email', data.data.email);
+        setIsButtonEditPressed(false);
+      })
+      .catch(err => {
+        console.log(err);
+
+        const errorCode = getErrorCode(err);
+        errorCode === '409' ?
+          setErrorMessage('Пользователь с таким email уже существует') :
+          setErrorMessage('При обновлении профиля произошла ошибка');
+      })
   }
 
   // обработчик выхода из приложения

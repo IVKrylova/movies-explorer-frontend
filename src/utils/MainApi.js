@@ -5,6 +5,7 @@ class MainApi {
   constructor(options) {
     this.baseUrl = options.baseUrl;
     this.headers = options.headers;
+    this.contentType = this.headers['Content-Type'];
   }
 
   // регистрация нового пользователя
@@ -32,8 +33,8 @@ class MainApi {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'GET',
       headers: {
-        'Content-Type': this.headers['Content-Type'],
-        'Authorization' : `Bearer ${token}`
+        'Content-Type': this.contentType,
+        'Authorization' : `Bearer ${token}`,
       }
     })
     .then(checkResponse)
@@ -43,8 +44,24 @@ class MainApi {
   getUserInfo(token) {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${token}`,
       }
+    })
+    .then(checkResponse)
+  }
+
+  // метод для редактирования информации о пользователе
+  editProfileInfo(name, email, token) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': this.contentType,
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email
+      })
     })
     .then(checkResponse)
   }
