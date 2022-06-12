@@ -1,4 +1,4 @@
-import { mainOptions, MAIN_URL } from './constants';
+import { mainOptions } from './constants';
 import { checkResponse } from './utils';
 
 class MainApi {
@@ -62,6 +62,34 @@ class MainApi {
         name: name,
         email: email
       })
+    })
+    .then(checkResponse)
+  }
+
+  // метод сохранения карточки на сервере
+  saveMovie(data, token) {
+    return fetch(`${this.baseUrl}/movies`, {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': this.contentType
+      },
+      body: JSON.stringify({
+        country: data.country,
+        director: data.director,
+        duration: data.duration,
+        year: data.year,
+        description: data.description,
+        image: data.image,
+        trailerLink: data.trailerLink,
+        thumbnail: data.thumbnail,
+        movieId: data.movieId,
+        nameRU: data.nameRU,
+        nameEN: data.nameEN,
+      })
+    })
+    .then(res => {
+      return res;
     })
     .then(checkResponse)
   }

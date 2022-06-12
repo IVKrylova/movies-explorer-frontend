@@ -254,7 +254,6 @@ const App = _ => {
   const handleEditProfile = props => {
     const token = localStorage.getItem('token');
 
-    /* setIsButtonEditPressed(false); */
     setErrorMessage('');
     mainApi.editProfileInfo(props.name, props.email, token )
       .then(data => {
@@ -270,6 +269,27 @@ const App = _ => {
           setErrorMessage('Пользователь с таким email уже существует') :
           setErrorMessage('При обновлении профиля произошла ошибка');
       })
+  }
+
+  // обработчик клика по лайку
+  const handleLikeMovie = props => {
+    const token = localStorage.getItem('token');
+
+    setErrorMessage('');
+    mainApi.saveMovie(props, token)
+      .then(data => {
+        // ToDo проверять есть ли фильм в списке сохраненных
+      })
+      .catch(err => {
+        console.log(err);
+
+        setErrorMessage('При сохранении фильма произошла ошибка');
+      })
+  }
+
+  // обработчик клика по кнопке удалить
+  const handleDeleteMovie = props => {
+    console.log(props)
   }
 
   // обработчик выхода из приложения
@@ -289,7 +309,8 @@ const App = _ => {
             <Header currentUrl={currentUrl}
               isOpenMenu={isOpenMenu}
               onClickMenu={openMenu}
-              onClickButtonClose={closeMenu} />
+              onClickButtonClose={closeMenu}
+              loggedIn={loggedIn} />
             <Main />
             <Footer />
           </Route>
@@ -300,7 +321,8 @@ const App = _ => {
                 <Header currentUrl={currentUrl}
                   isOpenMenu={isOpenMenu}
                   onClickMenu={openMenu}
-                  onClickButtonClose={closeMenu} />
+                  onClickButtonClose={closeMenu}
+                  loggedIn={loggedIn} />
                 <Movies movies={movies}
                   currentUrl={currentUrl}
                   isFirstOpen={isFirstOpen}
@@ -308,7 +330,8 @@ const App = _ => {
                   onClick={handleClickCheckbox}
                   isShortFilm={isShortFilm}
                   errorMessage={errorMessage}
-                  isLoading={isLoading} />
+                  isLoading={isLoading}
+                  onMovieLike={handleLikeMovie} />
                 <Footer />
               </>
             }
@@ -320,12 +343,14 @@ const App = _ => {
                 <Header currentUrl={currentUrl}
                   isOpenMenu={isOpenMenu}
                   onClickMenu={openMenu}
-                  onClickButtonClose={closeMenu} />
+                  onClickButtonClose={closeMenu}
+                  loggedIn={loggedIn} />
                 <SavedMovies /* movies={movies} */
                   currentUrl={currentUrl}
                   idCardHovered={idCardHovered}
                   onMouseOver={handleMouseOverCard}
-                  onMouseOut={handleMouseOutCard} />
+                  onMouseOut={handleMouseOutCard}
+                  onDeleteMovie={handleDeleteMovie} />
                 <Footer />
               </>
             }
@@ -337,7 +362,8 @@ const App = _ => {
                 <Header currentUrl={currentUrl}
                   isOpenMenu={isOpenMenu}
                   onClickMenu={openMenu}
-                  onClickButtonClose={closeMenu} />
+                  onClickButtonClose={closeMenu}
+                  loggedIn={loggedIn} />
                 <Profile sendProperty={handleEditProfile}
                   errorMessage={errorMessage}
                   currentUrl={currentUrl}

@@ -32,7 +32,8 @@ const Movies = props => {
           <ErrorMessage errorMessage={props.errorMessage} />
           <MoviesCardList movies={props.movies}
             currentUrl={props.currentUrl}
-            amountMovies={amountMovies} />
+            amountMovies={amountMovies}
+            onMovieLike={props.onMovieLike} />
           <ButtonMore buttonText={'Ещё'}
             classModifier={'button-more__place_movies'}
             movies={props.movies}

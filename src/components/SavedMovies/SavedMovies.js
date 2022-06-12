@@ -12,7 +12,8 @@ const SavedMovies = props => {
         currentUrl={props.currentUrl}
         idCardHovered={props.idCardHovered}
         onMouseOver={props.onMouseOver}
-        onMouseOut={props.onMouseOut} />
+        onMouseOut={props.onMouseOut}
+        onDeleteMovie={props.onDeleteMovie} />
     </main>
   );
 }
