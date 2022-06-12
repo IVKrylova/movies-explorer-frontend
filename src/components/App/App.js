@@ -345,12 +345,13 @@ const App = _ => {
                   onClickMenu={openMenu}
                   onClickButtonClose={closeMenu}
                   loggedIn={loggedIn} />
-                <SavedMovies /* movies={movies} */
-                  currentUrl={currentUrl}
+                <SavedMovies currentUrl={currentUrl}
                   idCardHovered={idCardHovered}
                   onMouseOver={handleMouseOverCard}
                   onMouseOut={handleMouseOutCard}
-                  onDeleteMovie={handleDeleteMovie} />
+                  onDeleteMovie={handleDeleteMovie}
+                  setErrorMessage={setErrorMessage}
+                  errorMessage={errorMessage} />
                 <Footer />
               </>
             }

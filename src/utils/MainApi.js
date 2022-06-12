@@ -93,6 +93,16 @@ class MainApi {
     })
     .then(checkResponse)
   }
+
+  // метод получения массива сохраненных фильмов
+  getSavedMovies(token) {
+    return fetch(`${this.baseUrl}/movies`, {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    })
+    .then(checkResponse)
+  }
 }
 
 // создание экземпляра класса MainApi

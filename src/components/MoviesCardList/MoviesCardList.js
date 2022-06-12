@@ -16,11 +16,14 @@ const MoviesCardList = props => {
       <ul className="movies-list">
         {props.movies && props.movies.map(movie => {
           return (
-            <MoviesCard key={movie.id}
+            <MoviesCard key={props.currentUrl === '/movies' ?
+              movie.id : movie._id}
               movieId={movie.id}
               nameRU={movie.nameRU}
               durationInCard={calcDuration(movie)}
-              image={`${IMAGE_URL}${movie.image.url}`}
+              image={props.currentUrl === '/movies' ?
+                `${IMAGE_URL}${movie.image.url}` :
+                movie.image}
               currentUrl={props.currentUrl}
               idCardHovered={props.idCardHovered}
               onMouseOver={props.onMouseOver}
@@ -35,7 +38,9 @@ const MoviesCardList = props => {
               year={movie.year}
               description={movie.description}
               trailerLink={movie.trailerLink}
-              thumbnail={`${IMAGE_URL}${movie.image.formats.thumbnail.url}`}
+              thumbnail={props.currentUrl === '/movies' ?
+                `${IMAGE_URL}${movie.image.formats.thumbnail.url}` :
+                movie.thumbnail}
               nameEN={movie.nameEN} />
           );
         })}

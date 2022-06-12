@@ -43,7 +43,8 @@ const MoviesCard = props => {
       <button type="button"
         className={`movie__delete ${props.currentUrl === '/saved-movies' ? '' : 'movie__delete_hidden'} ${props.idCardHovered === props.movieId && screenWidth >= 768 ? 'movie__delete_visible' : ''}`}
         aria-label="кнопка удалить из сохраненных"
-        onDeleteMovie={handleClickDelete}>
+        onDeleteMovie={handleClickDelete}
+        onClick={handleClickDelete}>
       </button>
     </li>
   );
