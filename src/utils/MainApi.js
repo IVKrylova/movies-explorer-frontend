@@ -103,6 +103,18 @@ class MainApi {
     })
     .then(checkResponse)
   }
+
+  // метод удаления фильма из сохраненных
+  deleteMovie(idMovie, token) {
+    return fetch(`${this.baseUrl}/movies/${idMovie}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': this.contentType
+      }
+    })
+    .then(checkResponse)
+  }
 }
 
 // создание экземпляра класса MainApi

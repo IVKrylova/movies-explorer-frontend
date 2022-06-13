@@ -5,6 +5,7 @@ import { useState } from 'react';
 const MoviesCard = props => {
   // стейты лайка карточки
   const [isLiked, setIsLiked] = useState(false);
+
   // получаем ширину экрана
   const screenWidth = useWindowWidth();
   // className для кнопки лайка
@@ -25,6 +26,7 @@ const MoviesCard = props => {
 
   const handleClickDelete = _ => {
     props.onDeleteMovie(props);
+
   }
 
   return (
@@ -43,7 +45,6 @@ const MoviesCard = props => {
       <button type="button"
         className={`movie__delete ${props.currentUrl === '/saved-movies' ? '' : 'movie__delete_hidden'} ${props.idCardHovered === props.movieId && screenWidth >= 768 ? 'movie__delete_visible' : ''}`}
         aria-label="кнопка удалить из сохраненных"
-        onDeleteMovie={handleClickDelete}
         onClick={handleClickDelete}>
       </button>
     </li>

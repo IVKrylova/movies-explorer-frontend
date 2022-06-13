@@ -40,6 +40,8 @@ const App = _ => {
   const [currentUser, setCurrentUser] = useState({ _id: '', email: '', name: ''});
   // стейт кнопки Редактировать
   const [isButtonEditPressed, setIsButtonEditPressed] = useState(false);
+  // стейт массива сохраненных фильмов
+  const [savedMovies, setSavedMovies] = useState([]);
 
   // получаем текущий URL
   const location = useLocation();
@@ -181,7 +183,7 @@ const App = _ => {
 
   // обработчик наведения курсора на карточку фильма
   const handleMouseOverCard = card => {
-    setIdCardHovered(card.id);
+    setIdCardHovered(card.movieId);
   }
 
   // обработчик снятия курсора с карточки фильма
@@ -289,7 +291,17 @@ const App = _ => {
 
   // обработчик клика по кнопке удалить
   const handleDeleteMovie = props => {
-    console.log(props)
+    setErrorMessage('');
+    mainApi.deleteMovie(props._id, localStorage.token)
+      .then(data => {
+        const newListSavedMovies = savedMovies.filter(movie => movie._id !== data.data._id);
+
+        setSavedMovies(newListSavedMovies);
+      })
+      .catch(err => {
+        console.log(err);
+        setErrorMessage('Произошла ошибка');
+      })
   }
 
   // обработчик выхода из приложения
@@ -349,9 +361,11 @@ const App = _ => {
                   idCardHovered={idCardHovered}
                   onMouseOver={handleMouseOverCard}
                   onMouseOut={handleMouseOutCard}
-                  onDeleteMovie={handleDeleteMovie}
                   setErrorMessage={setErrorMessage}
-                  errorMessage={errorMessage} />
+                  errorMessage={errorMessage}
+                  savedMovies={savedMovies}
+                  setSavedMovies={setSavedMovies}
+                  onDeleteMovie={handleDeleteMovie} />
                 <Footer />
               </>
             }

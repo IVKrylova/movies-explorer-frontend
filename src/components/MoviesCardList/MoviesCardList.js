@@ -18,7 +18,10 @@ const MoviesCardList = props => {
           return (
             <MoviesCard key={props.currentUrl === '/movies' ?
               movie.id : movie._id}
-              movieId={movie.id}
+              _id={props.currentUrl === '/movies' ?
+                movie.id : movie._id}
+              movieId={props.currentUrl === '/movies' ?
+                movie.id : movie.movieId}
               nameRU={movie.nameRU}
               durationInCard={calcDuration(movie)}
               image={props.currentUrl === '/movies' ?

@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext } from 'react';
 import './SavedMovies.css';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -8,16 +8,18 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const SavedMovies = props => {
-  // стейт массива сохраненных фильмов
-  const [savedMovies, setSavedMovies] = useState([]);
   // подписываемся на контекст CurrentUserContext
   const currentUser = useContext(CurrentUserContext);
+  // получаем функцию установки сообщения об ошибке
+  const setErrorMessage = props.setErrorMessage;
+  // получаем функцию установки массива сохраненных карточек
+  const setSavedMovies = props.setSavedMovies;
 
   // установка массива сохраненных фильмов
   useEffect(_ => {
     const token = localStorage.getItem('token');
 
-    props.setErrorMessage('');
+    setErrorMessage('');
     mainApi.getSavedMovies(token)
      .then(data => {
         const savedMovies = data.data
@@ -27,15 +29,15 @@ const SavedMovies = props => {
       })
      .catch(err => {
       console.log(err);
-      props.setErrorMessage('Произошла ошибка')
+      setErrorMessage('Произошла ошибка')
     })
-  }, [])
+  }, []);
 
   return (
     <main className="saved-movies">
       <SearchMovies />
       <Preloader />
-      <MoviesCardList movies={savedMovies}
+      <MoviesCardList movies={props.savedMovies}
         currentUrl={props.currentUrl}
         idCardHovered={props.idCardHovered}
         onMouseOver={props.onMouseOver}
