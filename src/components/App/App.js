@@ -200,10 +200,18 @@ const App = _ => {
     .then(data => {
       const searchMovies = filterByName(data, searchRequest.movie);
 
+      // проверяем, есть ли найденные фильмы в сохраненных
+      if (savedMovies.length > 0) {
+        savedMovies.forEach(savedMovie => {
+          searchMovies.forEach(searchMovie => {
+            if (savedMovie.movieId === searchMovie.id) searchMovie.isLikeActive = true;
+          })
+        });
+      }
+
       setMovies(searchMovies);
       setIsFirstOpen(false);
       setIsShortFilm(false);
-
       localStorage.setItem('movies', JSON.stringify(searchMovies));
       localStorage.setItem('searchRequest', searchRequest.movie);
       localStorage.setItem('isShortFilm', false);
