@@ -273,35 +273,59 @@ const App = _ => {
       })
   }
 
-  // обработчик клика по лайку
-  const handleLikeMovie = props => {
-    const token = localStorage.getItem('token');
+  // функция удаления фильма из сохраненных
+  const deleteSavedMovie = (selectedMovie, token) => {
+    const deletedMovie = savedMovies.find(movie => selectedMovie.movieId === movie.movieId);
 
-    setErrorMessage('');
-    mainApi.saveMovie(props, token)
-      .then(data => {
-        // ToDo проверять есть ли фильм в списке сохраненных
-      })
-      .catch(err => {
-        console.log(err);
-
-        setErrorMessage('При сохранении фильма произошла ошибка');
-      })
-  }
-
-  // обработчик клика по кнопке удалить
-  const handleDeleteMovie = props => {
-    setErrorMessage('');
-    mainApi.deleteMovie(props._id, localStorage.token)
+    mainApi.deleteMovie(deletedMovie._id, token)
       .then(data => {
         const newListSavedMovies = savedMovies.filter(movie => movie._id !== data.data._id);
-
         setSavedMovies(newListSavedMovies);
+
+        movies.forEach(movie => {
+          if (movie.id === data.data.movieId) {
+            movie.isLikeActive = false;
+          }
+        });
+        setMovies([...movies]);
+        localStorage.setItem('movies', JSON.stringify(movies));
       })
       .catch(err => {
         console.log(err);
         setErrorMessage('Произошла ошибка');
       })
+  }
+
+  // обработчик клика по лайку
+  const handleLikeMovie = (props) => {
+    setErrorMessage('');
+    if (!props.isLikeActive) {
+      mainApi.saveMovie(props, localStorage.token)
+        .then(data => {
+          movies.forEach(movie => {
+            if (movie.id === data.data.movieId) {
+              movie.isLikeActive = true;
+            }
+          });
+
+          setMovies([...movies]);
+          localStorage.setItem('movies', JSON.stringify(movies));
+          setSavedMovies([...savedMovies, data.data])
+        })
+        .catch(err => {
+          console.log(err);
+
+          setErrorMessage('При сохранении фильма произошла ошибка');
+        })
+    } else {
+      deleteSavedMovie(props, localStorage.token);
+    }
+  }
+
+  // обработчик клика по кнопке удалить
+  const handleDeleteMovie = props => {
+    setErrorMessage('');
+    deleteSavedMovie(props, localStorage.token);
   }
 
   // обработчик выхода из приложения

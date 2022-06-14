@@ -35,16 +35,17 @@ const MoviesCardList = props => {
               index={props.movies.indexOf(movie)}
               onMovieLike={props.onMovieLike}
               onDeleteMovie={props.onDeleteMovie}
-              country={movie.country}
-              director={movie.director}
+              country={movie.country || 'unknown'}
+              director={movie.director || 'unknown'}
               duration={movie.duration}
-              year={movie.year}
-              description={movie.description}
+              year={movie.year || 'unknown'}
+              description={movie.description || 'unknown'}
               trailerLink={movie.trailerLink}
               thumbnail={props.currentUrl === '/movies' ?
                 `${IMAGE_URL}${movie.image.formats.thumbnail.url}` :
                 movie.thumbnail}
-              nameEN={movie.nameEN} />
+              nameEN={movie.nameEN || 'unknown'}
+              isLikeActive={movie.isLikeActive} />
           );
         })}
       </ul>

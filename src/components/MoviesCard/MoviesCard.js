@@ -1,16 +1,12 @@
 import './MoviesCard.css';
 import useWindowWidth from '../../hooks/useWindowWidth';
-import { useState } from 'react';
 
 const MoviesCard = props => {
-  // стейты лайка карточки
-  const [isLiked, setIsLiked] = useState(false);
-
   // получаем ширину экрана
   const screenWidth = useWindowWidth();
   // className для кнопки лайка
   const movieLikeClassName = (
-    `movie__like ${props.currentUrl === '/movies' ? '' : 'movie__like_hidden'} ${isLiked ? 'movie__like_active' : ''}`
+    `movie__like ${props.currentUrl === '/movies' ? '' : 'movie__like_hidden'} ${props.isLikeActive ? 'movie__like_active' : ''}`
   );
 
   // обработчик наведения на карточку
@@ -21,12 +17,10 @@ const MoviesCard = props => {
   // обработчик клика по лайку
   const handleClickLike = _ => {
     props.onMovieLike(props);
-    setIsLiked(true);
   }
 
   const handleClickDelete = _ => {
     props.onDeleteMovie(props);
-
   }
 
   return (
