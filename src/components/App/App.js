@@ -42,6 +42,10 @@ const App = _ => {
   const [isButtonEditPressed, setIsButtonEditPressed] = useState(false);
   // стейт массива сохраненных фильмов
   const [savedMovies, setSavedMovies] = useState([]);
+  // стейт фильмов, найденных в сохраненных
+  const [foundSavedMovies, setFoundSavedMovies] = useState([]);
+  // стейт поиска на странице сохраненных фильмов
+  const [isSearchStarted, setIsSearchStarted] = useState(false);
 
   // получаем текущий URL
   const location = useLocation();
@@ -198,21 +202,21 @@ const App = _ => {
     setErrorMessage('');
     moviesApi.getMovies()
     .then(data => {
-      const searchMovies = filterByName(data, searchRequest.movie);
+      const foundMovies = filterByName(data, searchRequest.movie);
 
       // проверяем, есть ли найденные фильмы в сохраненных
       if (savedMovies.length > 0) {
         savedMovies.forEach(savedMovie => {
-          searchMovies.forEach(searchMovie => {
-            if (savedMovie.movieId === searchMovie.id) searchMovie.isLikeActive = true;
+          foundMovies.forEach(foundMovie => {
+            if (savedMovie.movieId === foundMovie.id) foundMovie.isLikeActive = true;
           })
         });
       }
 
-      setMovies(searchMovies);
+      setMovies(foundMovies);
       setIsFirstOpen(false);
       setIsShortFilm(false);
-      localStorage.setItem('movies', JSON.stringify(searchMovies));
+      localStorage.setItem('movies', JSON.stringify(foundMovies));
       localStorage.setItem('searchRequest', searchRequest.movie);
       localStorage.setItem('isShortFilm', false);
     })
@@ -243,10 +247,10 @@ const App = _ => {
 
       moviesApi.getMovies()
         .then(data => {
-          const searchMovies = filterByName(data, localStorage.searchRequest);
+          const foundMovies = filterByName(data, localStorage.searchRequest);
 
-          setMovies(searchMovies);
-          localStorage.setItem('movies', JSON.stringify(searchMovies));
+          setMovies(foundMovies);
+          localStorage.setItem('movies', JSON.stringify(foundMovies));
           localStorage.setItem('isShortFilm', false);
         })
         .catch(err => {
@@ -336,6 +340,25 @@ const App = _ => {
     deleteSavedMovie(props, localStorage.token);
   }
 
+  // обработчик формы поиска по сохраненным фильмам
+  const handleSearchFormForSavedMovies = searchRequest => {
+    setIsSearchStarted(true);
+    setIsLoading(true);
+    setFoundSavedMovies([]);
+    setErrorMessage('');
+
+    const foundMovies = filterByName(savedMovies, searchRequest.movie);
+
+    if (foundMovies.length > 0) {
+      setIsLoading(false);
+      setFoundSavedMovies(foundMovies);
+    }
+    if (foundMovies.length === 0) {
+      setIsLoading(false);
+      setErrorMessage('Ничего не найдено');
+    }
+  }
+
   // обработчик выхода из приложения
   const handleExit = _ => {
     localStorage.clear();
@@ -397,7 +420,12 @@ const App = _ => {
                   errorMessage={errorMessage}
                   savedMovies={savedMovies}
                   setSavedMovies={setSavedMovies}
-                  onDeleteMovie={handleDeleteMovie} />
+                  onDeleteMovie={handleDeleteMovie}
+                  sendProperty={handleSearchFormForSavedMovies}
+                  isLoading={isLoading}
+                  isSearchStarted={isSearchStarted}
+                  foundSavedMovies={foundSavedMovies}
+                  setIsSearchStarted={setIsSearchStarted} />
                 <Footer />
               </>
             }

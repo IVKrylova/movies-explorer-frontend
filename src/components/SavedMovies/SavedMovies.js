@@ -6,6 +6,7 @@ import SearchMovies from '../SearchMovies/SearchMovies';
 import { mainApi } from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Message from '../Message/Message';
 
 const SavedMovies = props => {
   // подписываемся на контекст CurrentUserContext
@@ -14,11 +15,14 @@ const SavedMovies = props => {
   const setErrorMessage = props.setErrorMessage;
   // получаем функцию установки массива сохраненных карточек
   const setSavedMovies = props.setSavedMovies;
+  // получаем функцию установки стейта начала поиска
+  const setIsSearchStarted = props.setIsSearchStarted;
 
   // установка массива сохраненных фильмов
   useEffect(_ => {
     const token = localStorage.getItem('token');
 
+    setIsSearchStarted(false);
     setErrorMessage('');
     mainApi.getSavedMovies(token)
      .then(data => {
@@ -33,11 +37,14 @@ const SavedMovies = props => {
     })
   }, []);
 
+  // установка массива сохраненных фильмов после поиска
+  const listMovies = props.isSearchStarted ? props.foundSavedMovies : props.savedMovies;
+
   return (
     <main className="saved-movies">
-      <SearchMovies />
-      <Preloader />
-      <MoviesCardList movies={props.savedMovies}
+      <SearchMovies sendProperty={props.sendProperty} />
+      <Preloader isLoading={props.isLoading} />
+      <MoviesCardList movies={listMovies}
         currentUrl={props.currentUrl}
         idCardHovered={props.idCardHovered}
         onMouseOver={props.onMouseOver}
