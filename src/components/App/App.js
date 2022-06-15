@@ -394,6 +394,11 @@ const App = _ => {
     localStorage.clear();
     setCurrentUser({ _id: '', email: '', name: ''});
     setLoggedIn(false);
+    setIsShortFilm(false);
+    setIsFirstOpen(true);
+    setErrorMessage('');
+    setMovies([]);
+    setSavedMovies([]);
     history.push('/');
   }
 
