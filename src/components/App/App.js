@@ -13,9 +13,9 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import { moviesApi } from '../../utils/MoviesApi';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { filterByName, filterByDuration, getErrorCode } from '../../utils/utils';
 import { mainApi } from '../../utils/MainApi';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 const App = _ => {
   // стейт бургерного меню
@@ -65,13 +65,18 @@ const App = _ => {
 
   // установка начальных значений из localStorage для страницы с поиском фильмов
   useEffect(_ => {
-    if (currentUrl === '/movies' && localStorage.movies) {
-      setMovies(JSON.parse(localStorage.movies));
+    if (localStorage.movies) setMovies(JSON.parse(localStorage.movies));
+    if (localStorage.isShortFilm === 'true') setIsShortFilm(true);
+    if (localStorage.isShortFilm === 'false') setIsShortFilm(false);
+  }, []);
 
+  // установка значения чекбокса из localStorage при возвращении на страницу поиска фильмов
+  useEffect(_ => {
+    if (currentUrl === '/movies') {
       if (localStorage.isShortFilm === 'true') setIsShortFilm(true);
       if (localStorage.isShortFilm === 'false') setIsShortFilm(false);
     }
-  }, []);
+  }, [currentUrl]);
 
   // загрузка информации о пользователе с сервера
   useEffect(_ => {
