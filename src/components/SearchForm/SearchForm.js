@@ -7,7 +7,7 @@ import FormErrorMessage from '../FormErrorMessage/FormErrorMessage';
 const SearchForm = props => {
   // запускаем валидацию формы
   const { values, handleChange, isValid, setValues } = useFormAndValidation();
-  // стейт кнопки в форме поиска на странице с фильмами
+  // стейт кнопки в форме поиска
   const [isPressed, setIsPressed] = useState(false);
 
   // обраотчик формы

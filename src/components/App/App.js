@@ -195,7 +195,7 @@ const App = _ => {
     setIdCardHovered('');
   }
 
-  // обработчик формы поиска
+  // обработчик формы поиска на странице фильмов
   const handleSearchForm = searchRequest => {
     setIsLoading(true);
     setMovies([]);
@@ -227,7 +227,7 @@ const App = _ => {
     .finally(_ => setIsLoading(false));
   }
 
-  // обработчик переключателя короткометражных фильмов
+  // обработчик переключателя короткометражных фильмов на странице с фильмами
   const handleClickCheckbox = _ => {
     if (movies.length === 0) return;
 
@@ -359,6 +359,31 @@ const App = _ => {
     }
   }
 
+  // обработчик переключателя короткометражных фильмов на странице с сохраненными фильмами
+  const handleClickCheckboxOnSavedMovies = _ => {
+    if (savedMovies.length === 0) return;
+
+    if (!isShortFilm) {
+      const shortFilm = filterByDuration(savedMovies);
+
+      setIsShortFilm(true);
+      setSavedMovies(shortFilm);
+    } else {
+      setIsShortFilm(false);
+      setIsLoading(true);
+      setSavedMovies([]);
+      setErrorMessage('');
+
+      mainApi.getSavedMovies(localStorage.token)
+        .then(data => setSavedMovies(data.data))
+        .catch(err => {
+          console.log(err);
+          setErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+        })
+        .finally(_ => setIsLoading(false));
+    }
+  }
+
   // обработчик выхода из приложения
   const handleExit = _ => {
     localStorage.clear();
@@ -425,7 +450,10 @@ const App = _ => {
                   isLoading={isLoading}
                   isSearchStarted={isSearchStarted}
                   foundSavedMovies={foundSavedMovies}
-                  setIsSearchStarted={setIsSearchStarted} />
+                  setIsSearchStarted={setIsSearchStarted}
+                  onClick={handleClickCheckboxOnSavedMovies}
+                  isShortFilm={isShortFilm}
+                  setIsShortFilm={setIsShortFilm}/>
                 <Footer />
               </>
             }

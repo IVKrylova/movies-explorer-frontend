@@ -16,6 +16,8 @@ const SavedMovies = props => {
   const setSavedMovies = props.setSavedMovies;
   // получаем функцию установки стейта начала поиска
   const setIsSearchStarted = props.setIsSearchStarted;
+  // получаем функцию установки стейта чекбокса короткометражек
+  const setIsShortFilm = props.setIsShortFilm;
 
   // установка массива сохраненных фильмов
   useEffect(_ => {
@@ -23,6 +25,7 @@ const SavedMovies = props => {
 
     setIsSearchStarted(false);
     setErrorMessage('');
+    setIsShortFilm(false);
     mainApi.getSavedMovies(token)
      .then(data => {
         const savedMovies = data.data
@@ -42,7 +45,9 @@ const SavedMovies = props => {
   return (
     <main className="saved-movies">
       <SearchMovies sendProperty={props.sendProperty}
-        currentUrl={props.currentUrl} />
+        currentUrl={props.currentUrl}
+        onClick={props.onClick}
+        isShortFilm={props.isShortFilm} />
       <Preloader isLoading={props.isLoading} />
       <MoviesCardList movies={listMovies}
         currentUrl={props.currentUrl}
