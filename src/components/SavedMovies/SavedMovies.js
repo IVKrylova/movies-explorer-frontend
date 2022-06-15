@@ -6,7 +6,6 @@ import SearchMovies from '../SearchMovies/SearchMovies';
 import { mainApi } from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import Message from '../Message/Message';
 
 const SavedMovies = props => {
   // подписываемся на контекст CurrentUserContext
@@ -42,7 +41,8 @@ const SavedMovies = props => {
 
   return (
     <main className="saved-movies">
-      <SearchMovies sendProperty={props.sendProperty} />
+      <SearchMovies sendProperty={props.sendProperty}
+        currentUrl={props.currentUrl} />
       <Preloader isLoading={props.isLoading} />
       <MoviesCardList movies={listMovies}
         currentUrl={props.currentUrl}
