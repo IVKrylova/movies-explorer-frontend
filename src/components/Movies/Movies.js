@@ -25,6 +25,7 @@ const Movies = props => {
           message='Начните поиск'
           movies={props.movies}
           isLoading={props.isLoading}
+          currentUrl={props.currentUrl}
         />
       }
       {((props.isFirstOpen && localStorage.movies) || !props.isFirstOpen) &&
@@ -34,6 +35,7 @@ const Movies = props => {
             movies={props.movies}
             errorMessage={props.errorMessage}
             isLoading={props.isLoading}
+            currentUrl={props.currentUrl}
           />
           <ErrorMessage errorMessage={props.errorMessage} />
           <MoviesCardList

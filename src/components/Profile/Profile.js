@@ -8,6 +8,7 @@ import FormErrorMessage from '../FormErrorMessage/FormErrorMessage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import * as EmailValidator from 'email-validator';
+import Message from '../Message/Message';
 
 const Profile = props => {
   // подписываемся на контекст CurrentUserContext
@@ -95,6 +96,11 @@ const Profile = props => {
           isValid={isValid}
         />
       </form>
+      <Message
+        message="Профиль обновлен"
+        isSuccessfulUpdate={props.isSuccessfulUpdate}
+        currentUrl={props.currentUrl}
+      />
       <ul className={`buttons-list ${props.isButtonEditPressed ? 'buttons-list_invisible' : ''}`}>
         <li>
           <button type="button" className="buttons-list__button" onClick={props.onClickEdit}>

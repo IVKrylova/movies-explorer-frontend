@@ -46,6 +46,8 @@ const App = _ => {
   const [foundSavedMovies, setFoundSavedMovies] = useState([]);
   // стейт поиска на странице сохраненных фильмов
   const [isSearchStarted, setIsSearchStarted] = useState(false);
+  // стейт обновления профиля
+  const [isSuccessfulUpdate, setIsSuccessfulUpdate] = useState(false);
   // получаем текущий URL
   const location = useLocation();
   const currentUrl = location.pathname;
@@ -264,7 +266,17 @@ const App = _ => {
   }
 
   // обработчик клика по кнопке редактировать
-  const handleClickEdit = _ => setIsButtonEditPressed(true);
+  const handleClickEdit = _ => {
+    setIsButtonEditPressed(true);
+    setIsSuccessfulUpdate(false);
+  }
+
+  // изменение стейта редактирования профиля при переходе со страницы профиля
+  useEffect(_ => {
+    if (currentUrl === '/profile' && isSuccessfulUpdate) {
+      setIsSuccessfulUpdate(false);
+    }
+  }, [currentUrl]);
 
   // обработчик формы редактирования профиля
   const handleEditProfile = props => {
@@ -274,6 +286,7 @@ const App = _ => {
         setCurrentUser({ _id: data.data._id, email: data.data.email, name: data.data.name});
         localStorage.setItem('email', data.data.email);
         setIsButtonEditPressed(false);
+        setIsSuccessfulUpdate(true);
       })
       .catch(err => {
         console.log(err);
@@ -394,6 +407,7 @@ const App = _ => {
     setErrorMessage('');
     setMovies([]);
     setSavedMovies([]);
+    setIsSuccessfulUpdate(false);
     history.push('/');
   }
 
@@ -494,6 +508,7 @@ const App = _ => {
                   onClickEdit={handleClickEdit}
                   isButtonEditPressed={isButtonEditPressed}
                   onExit={handleExit}
+                  isSuccessfulUpdate={isSuccessfulUpdate}
                 />
               </>
             }
