@@ -1,5 +1,6 @@
-import './MoviesCard.css';
+import { Link } from 'react-router-dom';
 import useWindowWidth from '../../hooks/useWindowWidth';
+import './MoviesCard.css';
 
 const MoviesCard = props => {
   // получаем ширину экрана
@@ -19,6 +20,7 @@ const MoviesCard = props => {
     props.onMovieLike(props);
   }
 
+  // обработчик удаления фильма
   const handleClickDelete = _ => {
     props.onDeleteMovie(props);
   }
@@ -28,7 +30,9 @@ const MoviesCard = props => {
       ${props.index >= props.amountMovies ? 'movie_hidden' : ''}`}
       onMouseOver={props.currentUrl === '/saved-movies' ? handleMouseOver : undefined}
       onMouseOut={props.currentUrl === '/saved-movies' ? props.onMouseOut : undefined}>
-      <img src={props.image} alt={props.nameRU} className="movie__img" id={props.movieId} />
+      <Link to={{ pathname: props.trailerLink }} target="_blank" className="movie__trailer-link">
+        <img src={props.image} alt={props.nameRU} className="movie__img" id={props.movieId} />
+      </Link>
       <h3 className="movie__name">{props.nameRU}</h3>
       <p className="movie__duration">{props.durationInCard}</p>
       <button type="button"

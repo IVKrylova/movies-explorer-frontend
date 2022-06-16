@@ -9,12 +9,16 @@
   display: none;
 }
 
+.movie__trailer-link {
+  display: block;
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
 .movie__img {
   display: block;
   width: 286px;
   height: 168px;
-  grid-column: 1/3;
-  grid-row: 1/2;
 }
 
 .movie__name {
