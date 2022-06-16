@@ -44,8 +44,6 @@ const Profile = props => {
     setIsValid(true);
   }, [currentUser]);
 
-
-
   return (
     <main className="profile">
       <Title titleText={`Привет, ${currentUser.name}!`} />

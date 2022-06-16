@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
+import { Route, Switch, useLocation, useHistory, Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
@@ -35,7 +35,7 @@ const App = _ => {
   // стейт регистрации нового пользователя
   const [isRegistred, setIsRegistred] = useState(false);
   // стейт авторизации пользователя
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false /* true */);
   // стейт данных о пользователе
   const [currentUser, setCurrentUser] = useState({ _id: '', email: '', name: ''});
   // стейт кнопки Редактировать
@@ -54,15 +54,28 @@ const App = _ => {
   // получаем доступ к объекту history
   const history = useHistory();
 
+  // функция проверки токена
+  const tokenCheck = _ => {
+    if (localStorage.token) {
+      // проверяем данные о пользователе по токену
+      mainApi.sendToken(localStorage.token)
+        .then(data => {
+          const email = data.data.email;
+
+          if (email === localStorage.getItem('email')) {
+            setLoggedIn(true);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+
+          setErrorMessage('Произошла ошибка');
+        })
+    }
+  }
+
   // проверяем токен при загрузке приложения
   useEffect(_ => tokenCheck(), []);
-
-  // проверяем, авторизирован ли пользователь и загружаем приложение
-  useEffect(_ => {
-    if (loggedIn) {
-      history.push('/movies');
-    }
-  }, [loggedIn]);
 
   // установка начальных значений из localStorage для страницы с поиском фильмов
   useEffect(_ => {
@@ -121,26 +134,6 @@ const App = _ => {
       })
   }
 
-  // функция проверки токена
-  const tokenCheck = _ => {
-    if (localStorage.token) {
-      // проверяем данные о пользователе по токену
-      mainApi.sendToken(localStorage.token)
-        .then(data => {
-          const email = data.data.email;
-
-          if (email === localStorage.getItem('email')) {
-            setLoggedIn(true);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-
-          setErrorMessage('Произошла ошибка');
-        })
-    }
-  }
-
   // обработчик формы регистрации
   const handleRegisterForm = props => {
     setErrorMessage('');
@@ -164,20 +157,6 @@ const App = _ => {
     setErrorMessage('');
     logInApp(props.password, props.email);
   }
-
-  // настройка переадресации на страницу фильмов после удачной регистрации
-  useEffect(_ => {
-    if (isRegistred) {
-      history.push('/movies');
-    }
-  }, [isRegistred]);
-
-    // настройка переадресации на страницу фильмов после удачной авторизации
-    useEffect(_ => {
-      if (loggedIn && currentUrl === './signin') {
-        history.push('/movies');
-      }
-    }, [loggedIn]);
 
   // функция открытия бургерного меню
   const openMenu = _ => {
@@ -429,7 +408,7 @@ const App = _ => {
           </Route>
           <ProtectedRoute
             path="/movies"
-            loggedIn={loggedIn}
+            loggedIn={_ => setLoggedIn(loggedIn)}
             component={
               <>
                 <Header
@@ -456,7 +435,7 @@ const App = _ => {
           />
           <ProtectedRoute
             path="/saved-movies"
-            loggedIn={loggedIn}
+            loggedIn={_ => setLoggedIn(loggedIn)}
             component={
               <>
                 <Header
@@ -484,6 +463,7 @@ const App = _ => {
                   onClick={handleClickCheckboxOnSavedMovies}
                   isShortFilm={isShortFilm}
                   setIsShortFilm={setIsShortFilm}
+                  loggedIn={loggedIn}
                 />
                 <Footer />
               </>
@@ -491,7 +471,7 @@ const App = _ => {
           />
           <ProtectedRoute
             path="/profile"
-            loggedIn={loggedIn}
+            loggedIn={_ => setLoggedIn(loggedIn)}
             component={
               <>
                 <Header
@@ -514,20 +494,30 @@ const App = _ => {
             }
           />
           <Route path="/signup">
-            <Register
-              currentUrl={currentUrl}
-              sendProperty={handleRegisterForm}
-              errorMessage={errorMessage}
-              isRegistred={isRegistred}
-            />
+            {loggedIn &&
+              <Redirect to="/movies" />
+            }
+            {!loggedIn &&
+              <Register
+                currentUrl={currentUrl}
+                sendProperty={handleRegisterForm}
+                errorMessage={errorMessage}
+                isRegistred={isRegistred}
+              />
+            }
           </Route>
           <Route path="/signin">
-            <Login
-              currentUrl={currentUrl}
-              sendProperty={handleLoginForm}
-              errorMessage={errorMessage}
-              loggedIn={loggedIn}
-            />
+            {loggedIn &&
+              <Redirect to="/movies" />
+            }
+            {!loggedIn &&
+              <Login
+                currentUrl={currentUrl}
+                sendProperty={handleLoginForm}
+                errorMessage={errorMessage}
+                loggedIn={loggedIn}
+              />
+            }
           </Route>
           <Route path="*">
             <PageNotFound />
