@@ -94,6 +94,8 @@ const Profile = props => {
           buttonText="Сохранить"
           currentUrl={props.currentUrl}
           isValid={isValid}
+          name={values.name}
+          email={values.email}
         />
       </form>
       <Message
