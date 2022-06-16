@@ -64,6 +64,7 @@ const App = _ => {
 
           if (email === localStorage.getItem('email')) {
             setLoggedIn(true);
+            localStorage.setItem('loggedIn', true);
           }
         })
         .catch(err => {
@@ -116,6 +117,7 @@ const App = _ => {
       .then(data => {
         // сохраняем токен в localStorage
         localStorage.setItem('token', data.token);
+        localStorage.setItem('loggedIn', true);
         setLoggedIn(true);
       })
       .catch(err => {
@@ -408,7 +410,6 @@ const App = _ => {
           </Route>
           <ProtectedRoute
             path="/movies"
-            loggedIn={_ => setLoggedIn(loggedIn)}
             component={
               <>
                 <Header
@@ -435,7 +436,6 @@ const App = _ => {
           />
           <ProtectedRoute
             path="/saved-movies"
-            loggedIn={_ => setLoggedIn(loggedIn)}
             component={
               <>
                 <Header
@@ -471,7 +471,6 @@ const App = _ => {
           />
           <ProtectedRoute
             path="/profile"
-            loggedIn={_ => setLoggedIn(loggedIn)}
             component={
               <>
                 <Header

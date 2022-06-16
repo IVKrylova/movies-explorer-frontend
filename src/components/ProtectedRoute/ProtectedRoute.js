@@ -4,7 +4,7 @@ const ProtectedRoute = (props) => {
   return (
     <Route>
       {_ =>
-        props.loggedIn ? props.component : <Redirect to="/" />
+        localStorage.loggedIn === 'true' ? props.component : <Redirect to="/" />
       }
     </Route>
   );
