@@ -35,7 +35,7 @@ const App = _ => {
   // стейт регистрации нового пользователя
   const [isRegistred, setIsRegistred] = useState(false);
   // стейт авторизации пользователя
-  const [loggedIn, setLoggedIn] = useState(false /* true */);
+  const [loggedIn, setLoggedIn] = useState(false);
   // стейт данных о пользователе
   const [currentUser, setCurrentUser] = useState({ _id: '', email: '', name: ''});
   // стейт кнопки Редактировать
