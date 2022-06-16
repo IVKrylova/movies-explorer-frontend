@@ -1,5 +1,5 @@
-import './AboutProject.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
+import './AboutProject.css';
 
 const AboutProject = _ => {
   return (

@@ -8,7 +8,8 @@ const Login = props => {
   // запускаем валидацию формы
   const { values, handleChange, errors, isValid, resetForm } = useFormAndValidation();
   // сообщение о некорректном email
-  const emailErrorMessage = !EmailValidator.validate(values.email) && values.email !== undefined ? 'Hекорректный email' : '';
+  const emailErrorMessage = (!EmailValidator.validate(values.email) && values.email !== undefined) ?
+    'Hекорректный email' : '';
 
   // обраотчик формы авторизации
   const handleSubmit = evt => {
@@ -23,7 +24,8 @@ const Login = props => {
   }
 
   return (
-    <Auth titleText="Рады видеть!"
+    <Auth
+      titleText="Рады видеть!"
       nameForm="login"
       buttonText="Войти"
       authorizationText="Ещё не зарегистрированы?"
@@ -34,31 +36,40 @@ const Login = props => {
       isValid={isValid}
       errorMessage={props.errorMessage}
       loggedIn={props.loggedIn}
-      onResetForm={resetForm}>
+      onResetForm={resetForm}
+    >
       {/* Поле для email */}
       <label className="authorization__form-label">E-mail</label>
-        <FormInput type="email"
+        <FormInput
+          type="email"
           classModifier="form-input_place_auth"
           formName="login-form"
           name="email"
           id="login-form-email"
           value={values.email || ''}
-          onChange={handleChange} />
-        <FormErrorMessage isValid={isValid}
+          onChange={handleChange}
+        />
+        <FormErrorMessage
+          isValid={isValid}
           errorMessage={emailErrorMessage}
-          currentUrl={props.currentUrl} />
+          currentUrl={props.currentUrl}
+        />
         {/* Поле для пароля */}
         <label className="authorization__form-label">Пароль</label>
-        <FormInput type="password"
+        <FormInput
+          type="password"
           classModifier="form-input_place_auth"
           formName="login-form"
           name="password"
           id="login-form-password"
           value={values.password || ''}
-          onChange={handleChange} />
-        <FormErrorMessage isValid={isValid}
+          onChange={handleChange}
+        />
+        <FormErrorMessage
+          isValid={isValid}
           errorMessage={errors.password}
-          currentUrl={props.currentUrl} />
+          currentUrl={props.currentUrl}
+        />
     </Auth>
   );
 }

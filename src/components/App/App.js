@@ -46,7 +46,6 @@ const App = _ => {
   const [foundSavedMovies, setFoundSavedMovies] = useState([]);
   // стейт поиска на странице сохраненных фильмов
   const [isSearchStarted, setIsSearchStarted] = useState(false);
-
   // получаем текущий URL
   const location = useLocation();
   const currentUrl = location.pathname;
@@ -97,7 +96,7 @@ const App = _ => {
   }, [localStorage.token]);
 
   // функция авторизации пользователя
-  function logInApp(password, email) {
+  const logInApp = (password, email) => {
     mainApi.authorize(password,email)
       .then(data => {
         // сохраняем токен в localStorage
@@ -121,12 +120,10 @@ const App = _ => {
   }
 
   // функция проверки токена
-  function tokenCheck() {
-    const token = localStorage.getItem('token');
-
-    if (token) {
+  const tokenCheck = _ => {
+    if (localStorage.token) {
       // проверяем данные о пользователе по токену
-      mainApi.sendToken(token)
+      mainApi.sendToken(localStorage.token)
         .then(data => {
           const email = data.data.email;
 
@@ -271,10 +268,8 @@ const App = _ => {
 
   // обработчик формы редактирования профиля
   const handleEditProfile = props => {
-    const token = localStorage.getItem('token');
-
     setErrorMessage('');
-    mainApi.editProfileInfo(props.name, props.email, token )
+    mainApi.editProfileInfo(props.name, props.email, localStorage.token )
       .then(data => {
         setCurrentUser({ _id: data.data._id, email: data.data.email, name: data.data.name});
         localStorage.setItem('email', data.data.email);
@@ -314,7 +309,7 @@ const App = _ => {
   }
 
   // обработчик клика по лайку
-  const handleLikeMovie = (props) => {
+  const handleLikeMovie = props => {
     setErrorMessage('');
     if (!props.isLikeActive) {
       mainApi.saveMovie(props, localStorage.token)
@@ -408,24 +403,30 @@ const App = _ => {
         <Helmet htmlAttributes={{ lang : 'ru' }} />
         <Switch>
           <Route exact path="/">
-            <Header currentUrl={currentUrl}
+            <Header
+              currentUrl={currentUrl}
               isOpenMenu={isOpenMenu}
               onClickMenu={openMenu}
               onClickButtonClose={closeMenu}
-              loggedIn={loggedIn} />
+              loggedIn={loggedIn}
+            />
             <Main />
             <Footer />
           </Route>
-          <ProtectedRoute path="/movies"
+          <ProtectedRoute
+            path="/movies"
             loggedIn={loggedIn}
             component={
               <>
-                <Header currentUrl={currentUrl}
+                <Header
+                  currentUrl={currentUrl}
                   isOpenMenu={isOpenMenu}
                   onClickMenu={openMenu}
                   onClickButtonClose={closeMenu}
-                  loggedIn={loggedIn} />
-                <Movies movies={movies}
+                  loggedIn={loggedIn}
+                />
+                <Movies
+                  movies={movies}
                   currentUrl={currentUrl}
                   isFirstOpen={isFirstOpen}
                   sendProperty={handleSearchForm}
@@ -433,21 +434,26 @@ const App = _ => {
                   isShortFilm={isShortFilm}
                   errorMessage={errorMessage}
                   isLoading={isLoading}
-                  onMovieLike={handleLikeMovie} />
+                  onMovieLike={handleLikeMovie}
+                />
                 <Footer />
               </>
             }
           />
-          <ProtectedRoute path="/saved-movies"
+          <ProtectedRoute
+            path="/saved-movies"
             loggedIn={loggedIn}
             component={
               <>
-                <Header currentUrl={currentUrl}
+                <Header
+                  currentUrl={currentUrl}
                   isOpenMenu={isOpenMenu}
                   onClickMenu={openMenu}
                   onClickButtonClose={closeMenu}
-                  loggedIn={loggedIn} />
-                <SavedMovies currentUrl={currentUrl}
+                  loggedIn={loggedIn}
+                />
+                <SavedMovies
+                  currentUrl={currentUrl}
                   idCardHovered={idCardHovered}
                   onMouseOver={handleMouseOverCard}
                   onMouseOut={handleMouseOutCard}
@@ -463,40 +469,50 @@ const App = _ => {
                   setIsSearchStarted={setIsSearchStarted}
                   onClick={handleClickCheckboxOnSavedMovies}
                   isShortFilm={isShortFilm}
-                  setIsShortFilm={setIsShortFilm}/>
+                  setIsShortFilm={setIsShortFilm}
+                />
                 <Footer />
               </>
             }
           />
-          <ProtectedRoute path="/profile"
+          <ProtectedRoute
+            path="/profile"
             loggedIn={loggedIn}
             component={
               <>
-                <Header currentUrl={currentUrl}
+                <Header
+                  currentUrl={currentUrl}
                   isOpenMenu={isOpenMenu}
                   onClickMenu={openMenu}
                   onClickButtonClose={closeMenu}
-                  loggedIn={loggedIn} />
-                <Profile sendProperty={handleEditProfile}
+                  loggedIn={loggedIn}
+                />
+                <Profile
+                  sendProperty={handleEditProfile}
                   errorMessage={errorMessage}
                   currentUrl={currentUrl}
                   onClickEdit={handleClickEdit}
                   isButtonEditPressed={isButtonEditPressed}
-                  onExit={handleExit} />
+                  onExit={handleExit}
+                />
               </>
             }
           />
           <Route path="/signup">
-            <Register currentUrl={currentUrl}
+            <Register
+              currentUrl={currentUrl}
               sendProperty={handleRegisterForm}
               errorMessage={errorMessage}
-              isRegistred={isRegistred} />
+              isRegistred={isRegistred}
+            />
           </Route>
           <Route path="/signin">
-            <Login currentUrl={currentUrl}
+            <Login
+              currentUrl={currentUrl}
               sendProperty={handleLoginForm}
               errorMessage={errorMessage}
-              loggedIn={loggedIn} />
+              loggedIn={loggedIn}
+            />
           </Route>
           <Route path="*">
             <PageNotFound />

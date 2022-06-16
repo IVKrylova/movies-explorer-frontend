@@ -24,7 +24,8 @@ const Register = props => {
   }
 
   return (
-    <Auth titleText="Добро пожаловать!"
+    <Auth
+      titleText="Добро пожаловать!"
       nameForm="register"
       buttonText="Зарегистрироваться"
       authorizationText="Уже зарегистрированы?"
@@ -35,10 +36,12 @@ const Register = props => {
       isValid={isValid}
       errorMessage={props.errorMessage}
       isRegistred={props.isRegistred}
-      onResetForm={resetForm}>
+      onResetForm={resetForm}
+    >
       {/* Поле для имени */}
       <label className="authorization__form-label">Имя</label>
-      <FormInput type="text"
+      <FormInput
+        type="text"
         classModifier="form-input_place_auth"
         formName="register-form"
         name="name"
@@ -47,34 +50,45 @@ const Register = props => {
         id="register-form-name"
         value={values.name || ''}
         onChange={handleChange}
-        pattern="^[a-zA-Zа-яА-Я\s-]+$" />
-      <FormErrorMessage isValid={isValid}
+        pattern="^[a-zA-Zа-яА-Я\s-]+$"
+      />
+      <FormErrorMessage
+        isValid={isValid}
         errorMessage={errors.name}
-        currentUrl={props.currentUrl} />
+        currentUrl={props.currentUrl}
+      />
       {/* Поле для email */}
       <label className="authorization__form-label">E-mail</label>
-      <FormInput type="email"
+      <FormInput
+        type="email"
         classModifier="form-input_place_auth"
         formName="register-form"
         name="email"
         id="register-form-email"
         value={values.email || ''}
-        onChange={handleChange} />
-      <FormErrorMessage isValid={isValid}
+        onChange={handleChange}
+      />
+      <FormErrorMessage
+        isValid={isValid}
         errorMessage={emailErrorMessage}
-        currentUrl={props.currentUrl} />
+        currentUrl={props.currentUrl}
+      />
       {/* Поле для пароля */}
       <label className="authorization__form-label">Пароль</label>
-      <FormInput type="password"
+      <FormInput
+        type="password"
         classModifier="form-input_place_auth"
         formName="register-form"
         name="password"
         id="register-form-password"
         value={values.password || ''}
-        onChange={handleChange} />
-      <FormErrorMessage isValid={isValid}
+        onChange={handleChange}
+      />
+      <FormErrorMessage
+        isValid={isValid}
         errorMessage={errors.password}
-        currentUrl={props.currentUrl} />
+        currentUrl={props.currentUrl}
+      />
     </Auth>
     );
   }

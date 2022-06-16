@@ -31,18 +31,33 @@ const SearchForm = props => {
   }, []);
 
   return (
-    <form className="form search-form" name="search-form" id="search-form" noValidate
-      onSubmit={handleSubmit} >
-      <input className="search-form__input" type="text" name="movie" id="movie" placeholder="Фильм" required
+    <form
+      className="form search-form"
+      name="search-form"
+      id="search-form"
+      noValidate
+      onSubmit={handleSubmit}
+    >
+      <input className="search-form__input"
+        type="text"
+        name="movie"
+        id="movie"
+        placeholder="Фильм"
+        required
         value={values.movie || ''}
-        onChange={handleChange} />
-      <FormErrorMessage errorMessage='Нужно ввести ключевое слово'
+        onChange={handleChange}
+      />
+      <FormErrorMessage
+        errorMessage='Нужно ввести ключевое слово'
         isValid={isValid}
-        isPressed={/* props. */isPressed}
-        currentUrl={props.currentUrl} />
-      <FormButton buttonText='Поиск'
+        isPressed={isPressed}
+        currentUrl={props.currentUrl}
+      />
+      <FormButton
+        buttonText='Поиск'
         classNameButton='search-form__button'
-        currentUrl={props.currentUrl} />
+        currentUrl={props.currentUrl}
+      />
     </form>
   );
 }

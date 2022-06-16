@@ -52,7 +52,8 @@ const Profile = props => {
         {/* Поле для имени */}
         <fieldset className="profile__form-fieldset" disabled={!props.isButtonEditPressed}>
           <label className="profile__form-label">Имя</label>
-          <FormInpit type="text"
+          <FormInpit
+            type="text"
             classModifier="form-input_place_profile"
             formName="profile-form"
             name="name"
@@ -60,30 +61,39 @@ const Profile = props => {
             maxLength="30"
             id="profile-form-name"
             value={values.name || ''}
-            onChange={handleChange} />
+            onChange={handleChange}
+          />
         </fieldset>
-        <FormErrorMessage isValid={isValid}
+        <FormErrorMessage
+          isValid={isValid}
           errorMessage={errors.name}
-          currentUrl={props.currentUrl} />
+          currentUrl={props.currentUrl}
+        />
         {/* Поле для email */}
         <fieldset className="profile__form-fieldset" disabled={!props.isButtonEditPressed}>
           <label className="profile__form-label">E-mail</label>
-          <FormInpit type="email"
+          <FormInpit
+            type="email"
             classModifier="form-input_place_profile"
             formName="profile-form"
             name="email"
             id="profile-form-email"
             value={values.email || ''}
-            onChange={handleChange} />
+            onChange={handleChange}
+          />
         </fieldset>
-        <FormErrorMessage isValid={isValid}
+        <FormErrorMessage
+          isValid={isValid}
           errorMessage={emailErrorMessage}
-          currentUrl={props.currentUrl} />
+          currentUrl={props.currentUrl}
+        />
         <ErrorMessage errorMessage={props.errorMessage} />
-        <FormButton classNameButton={`profile__form-button ${props.isButtonEditPressed ? '' : 'profile__form-button_invisible'}`}
+        <FormButton
+          classNameButton={`profile__form-button ${props.isButtonEditPressed ? '' : 'profile__form-button_invisible'}`}
           buttonText="Сохранить"
           currentUrl={props.currentUrl}
-          isValid={isValid} />
+          isValid={isValid}
+        />
       </form>
       <ul className={`buttons-list ${props.isButtonEditPressed ? 'buttons-list_invisible' : ''}`}>
         <li>

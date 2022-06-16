@@ -9,9 +9,15 @@ const MoviesCard = props => {
   const movieLikeClassName = (
     `movie__like ${props.currentUrl === '/movies' ? '' : 'movie__like_hidden'} ${props.isLikeActive ? 'movie__like_active' : ''}`
   );
+  // className для карточки фильма в saved movies
+  const classNameInSavedMovies = props.currentUrl === '/saved-movies' ? 'movie_place_saved-movies' : '';
+  // className для кнопки удаления фильма
+  const classNameDeleteButton = props.currentUrl === '/saved-movies' ? '' : 'movie__delete_hidden';
+  // className для кнопки удаления фильма для десктопа
+  const classNameDeleteButtonDesktop = props.idCardHovered === props.movieId && screenWidth >= 768 ? 'movie__delete_visible' : '';
 
   // обработчик наведения на карточку
-  function handleMouseOver() {
+  const handleMouseOver = _ => {
     props.onMouseOver(props);
   }
 
@@ -26,24 +32,28 @@ const MoviesCard = props => {
   }
 
   return (
-    <li className={`movie ${props.currentUrl === '/saved-movies' ? 'movie_place_saved-movies' : ''}
-      ${props.index >= props.amountMovies ? 'movie_hidden' : ''}`}
+    <li className={`movie ${classNameInSavedMovies} ${props.index >= props.amountMovies ? 'movie_hidden' : ''}`}
       onMouseOver={props.currentUrl === '/saved-movies' ? handleMouseOver : undefined}
-      onMouseOut={props.currentUrl === '/saved-movies' ? props.onMouseOut : undefined}>
+      onMouseOut={props.currentUrl === '/saved-movies' ? props.onMouseOut : undefined}
+    >
       <Link to={{ pathname: props.trailerLink }} target="_blank" className="movie__trailer-link">
         <img src={props.image} alt={props.nameRU} className="movie__img" id={props.movieId} />
       </Link>
       <h3 className="movie__name">{props.nameRU}</h3>
       <p className="movie__duration">{props.durationInCard}</p>
-      <button type="button"
+      <button
+        type="button"
         className={movieLikeClassName}
         aria-label="кнопка лайк"
-        onClick={handleClickLike}>
+        onClick={handleClickLike}
+      >
       </button>
-      <button type="button"
-        className={`movie__delete ${props.currentUrl === '/saved-movies' ? '' : 'movie__delete_hidden'} ${props.idCardHovered === props.movieId && screenWidth >= 768 ? 'movie__delete_visible' : ''}`}
+      <button
+        type="button"
+        className={`movie__delete ${classNameDeleteButton} ${classNameDeleteButtonDesktop}`}
         aria-label="кнопка удалить из сохраненных"
-        onClick={handleClickDelete}>
+        onClick={handleClickDelete}
+      >
       </button>
     </li>
   );

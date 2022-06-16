@@ -15,17 +15,24 @@ const Auth = props => {
   return (
     <main className="authorization">
       <Logo classModifier="logo_place_auth" />
-      <Title titleText={props.titleText}
-        classModifier="title_place_auth" />
-      <form className="authorization__form" name={`${props.nameForm}-form`}
+      <Title
+        titleText={props.titleText}
+        classModifier="title_place_auth"
+      />
+      <form
+        className="authorization__form"
+        name={`${props.nameForm}-form`}
         onSubmit={props.currentUrl === '/signup' ? props.onSubmitRegister : props.onSubmitLogin}
-        noValidate>
+        noValidate
+      >
         {props.children}
         <ErrorMessage errorMessage={props.errorMessage} />
-        <FormButton classNameButton="authorization__form-button"
+        <FormButton
+          classNameButton="authorization__form-button"
           buttonText={props.buttonText}
           isValid={props.isValid}
-          currentUrl={props.currentUrl} />
+          currentUrl={props.currentUrl}
+        />
       </form>
       <p className="authorization__text">
         {props.authorizationText}{'\u00A0'}

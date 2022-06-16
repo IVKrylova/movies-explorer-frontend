@@ -44,17 +44,21 @@ const SavedMovies = props => {
 
   return (
     <main className="saved-movies">
-      <SearchMovies sendProperty={props.sendProperty}
+      <SearchMovies
+        sendProperty={props.sendProperty}
         currentUrl={props.currentUrl}
         onClick={props.onClick}
-        isShortFilm={props.isShortFilm} />
+        isShortFilm={props.isShortFilm}
+      />
       <Preloader isLoading={props.isLoading} />
-      <MoviesCardList movies={listMovies}
+      <MoviesCardList
+        movies={listMovies}
         currentUrl={props.currentUrl}
         idCardHovered={props.idCardHovered}
         onMouseOver={props.onMouseOver}
         onMouseOut={props.onMouseOut}
-        onDeleteMovie={props.onDeleteMovie} />
+        onDeleteMovie={props.onDeleteMovie}
+      />
       <ErrorMessage errorMessage={props.errorMessage} />
     </main>
   );

@@ -10,8 +10,10 @@ const Promo = _ => {
       <h1 className="promo__title">Учебный проект студента факультета <span className="promo__title-span">Веб-разработки.</span></h1>
       <p className="promo__text">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
       <NavHashLink smooth to={'/#about-project'} className="promo__link-anchor">
-        <ButtonMore buttonText={'Узнать больше'}
-          classModifier={'button-more__place_promo'} />
+        <ButtonMore
+          buttonText={'Узнать больше'}
+          classModifier={'button-more__place_promo'}
+        />
       </NavHashLink>
     </section>
   );

@@ -5,11 +5,15 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 const SearchMovies = props => {
   return(
     <section className="search-movies">
-      <SearchForm sendProperty={props.sendProperty}
-        currentUrl={props.currentUrl} />
-      <FilterCheckbox onClick={props.onClick}
+      <SearchForm
+        sendProperty={props.sendProperty}
+        currentUrl={props.currentUrl}
+      />
+      <FilterCheckbox
+        onClick={props.onClick}
         isShortFilm={props.isShortFilm}
-        currentUrl={props.currentUrl} />
+        currentUrl={props.currentUrl}
+      />
     </section>
   );
 }

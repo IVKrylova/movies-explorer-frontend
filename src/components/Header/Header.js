@@ -12,11 +12,13 @@ const Header = props => {
         <Link to="/signup" className="header__link">Регистрация</Link>
         <ButtonInHeader />
       </div>
-      <Navigation currentUrl={props.currentUrl}
+      <Navigation
+        currentUrl={props.currentUrl}
         isOpenMenu={props.isOpenMenu}
         onClickMenu={props.onClickMenu}
         onClickButtonClose={props.onClickButtonClose}
-        loggedIn={props.loggedIn} />
+        loggedIn={props.loggedIn}
+      />
     </header>
   );
 }

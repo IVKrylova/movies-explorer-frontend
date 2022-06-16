@@ -16,8 +16,9 @@ const MoviesCardList = props => {
       <ul className="movies-list">
         {props.movies && props.movies.map(movie => {
           return (
-            <MoviesCard key={props.currentUrl === '/movies' ?
-              movie.id : movie._id}
+            <MoviesCard
+              key={props.currentUrl === '/movies' ?
+                movie.id : movie._id}
               _id={props.currentUrl === '/movies' ?
                 movie.id : movie._id}
               movieId={props.currentUrl === '/movies' ?
@@ -45,7 +46,8 @@ const MoviesCardList = props => {
                 `${IMAGE_URL}${movie.image.formats.thumbnail.url}` :
                 movie.thumbnail}
               nameEN={movie.nameEN || 'unknown'}
-              isLikeActive={movie.isLikeActive} />
+              isLikeActive={movie.isLikeActive}
+            />
           );
         })}
       </ul>
