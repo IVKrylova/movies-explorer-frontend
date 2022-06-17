@@ -1,10 +1,14 @@
-.result-not-found {
+.message {
   color: #fff;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.22;
   text-align: center;
   padding: 0;
-  margin: 30px auto 0;
+  margin: 60px auto 0;
+}
+
+.message_hidden {
+  display: none;
 }

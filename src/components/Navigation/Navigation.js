@@ -5,7 +5,7 @@ import ButtonToAccount from '../ButtonToAccount/ButtonToAccount';
 
 const Navigation = props => {
   return (
-    <section className={`navigation ${props.currentUrl === '/' ? 'navigation_hidden' : ''}`}>
+    <section className={`navigation ${!props.loggedIn ? 'navigation_hidden' : ''}`}>
       {/* иконка бургерного меню */}
       <img src={burgerMenu} alt="меню навигации"
         className={`navigation__burger-menu ${props.isOpenMenu ? 'navigation__burger-menu_hidden' : ''}`}

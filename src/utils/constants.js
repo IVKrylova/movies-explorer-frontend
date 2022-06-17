@@ -1,83 +1,29 @@
-import wordsAboutDesign from '../images/33-words-about-design.png';
-import movieAlmanac from '../images/movie-almanac.png';
+// URL для обращения к собственной БД
+export const MAIN_URL = 'https://api.movies.ivkrylova.nomoredomains.xyz';
+// объект с настройками для собственной API
+export const mainOptions = {
+  baseUrl: MAIN_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}
 
-export const movies = [
-  {
-    country: 'США',
-    director: 'Стивен Кайак',
-    duration: '107',
-    year: '2010',
-    description: 'В конце 1960-х группа «Роллинг Стоунз», несмотря на все свои мегахиты и сверхуспешные концертные туры, была разорена. Виной всему — бездарный менеджмент и драконовское налогообложение в Британии. Тогда музыканты приняли не самое простое для себя решение: летом 1971 года после выхода альбома «Stiсky Fingers» они отправились на юг Франции записывать новую пластинку. Именно там, на Лазурном Берегу, в арендованном Китом Ричардсом подвале виллы Неллькот родился сборник «Exile on Main St.», который стал лучшим альбомом легендарной группы.',
-    image: wordsAboutDesign,
-    trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
-    nameRU: '33 слова о дизайне',
-    nameEN: 'Stones in Exile',
-    thumbnail: '/uploads/thumbnail_stones_in_exile_b2f1b8f4b7.jpe',
-    movieId: '1'
-  },
-  {
-    country: 'США',
-    director: 'Стивен Кайак',
-    duration: '45',
-    year: '2010',
-    description: 'В конце 1960-х группа «Роллинг Стоунз», несмотря на все свои мегахиты и сверхуспешные концертные туры, была разорена. Виной всему — бездарный менеджмент и драконовское налогообложение в Британии. Тогда музыканты приняли не самое простое для себя решение: летом 1971 года после выхода альбома «Stiсky Fingers» они отправились на юг Франции записывать новую пластинку. Именно там, на Лазурном Берегу, в арендованном Китом Ричардсом подвале виллы Неллькот родился сборник «Exile on Main St.», который стал лучшим альбомом легендарной группы.',
-    image: movieAlmanac,
-    trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
-    nameRU: 'Киноальманах «100 лет дизайна»',
-    nameEN: 'Stones in Exile',
-    thumbnail: '/uploads/thumbnail_stones_in_exile_b2f1b8f4b7.jpe',
-    movieId: '2'
-  },
-  {
-    country: 'США',
-    director: 'Стивен Кайак',
-    duration: '107',
-    year: '2010',
-    description: 'В конце 1960-х группа «Роллинг Стоунз», несмотря на все свои мегахиты и сверхуспешные концертные туры, была разорена. Виной всему — бездарный менеджмент и драконовское налогообложение в Британии. Тогда музыканты приняли не самое простое для себя решение: летом 1971 года после выхода альбома «Stiсky Fingers» они отправились на юг Франции записывать новую пластинку. Именно там, на Лазурном Берегу, в арендованном Китом Ричардсом подвале виллы Неллькот родился сборник «Exile on Main St.», который стал лучшим альбомом легендарной группы.',
-    image: wordsAboutDesign,
-    trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
-    nameRU: '33 слова о дизайне',
-    nameEN: 'Stones in Exile',
-    thumbnail: '/uploads/thumbnail_stones_in_exile_b2f1b8f4b7.jpe',
-    movieId: '3'
-  },
-  {
-    country: 'США',
-    director: 'Стивен Кайак',
-    duration: '107',
-    year: '2010',
-    description: 'В конце 1960-х группа «Роллинг Стоунз», несмотря на все свои мегахиты и сверхуспешные концертные туры, была разорена. Виной всему — бездарный менеджмент и драконовское налогообложение в Британии. Тогда музыканты приняли не самое простое для себя решение: летом 1971 года после выхода альбома «Stiсky Fingers» они отправились на юг Франции записывать новую пластинку. Именно там, на Лазурном Берегу, в арендованном Китом Ричардсом подвале виллы Неллькот родился сборник «Exile on Main St.», который стал лучшим альбомом легендарной группы.',
-    image: movieAlmanac,
-    trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
-    nameRU: 'Киноальманах «100 лет дизайна»',
-    nameEN: 'Stones in Exile',
-    thumbnail: '/uploads/thumbnail_stones_in_exile_b2f1b8f4b7.jpe',
-    movieId: '4'
-  },
-  {
-    country: 'США',
-    director: 'Стивен Кайак',
-    duration: '107',
-    year: '2010',
-    description: 'В конце 1960-х группа «Роллинг Стоунз», несмотря на все свои мегахиты и сверхуспешные концертные туры, была разорена. Виной всему — бездарный менеджмент и драконовское налогообложение в Британии. Тогда музыканты приняли не самое простое для себя решение: летом 1971 года после выхода альбома «Stiсky Fingers» они отправились на юг Франции записывать новую пластинку. Именно там, на Лазурном Берегу, в арендованном Китом Ричардсом подвале виллы Неллькот родился сборник «Exile on Main St.», который стал лучшим альбомом легендарной группы.',
-    image: wordsAboutDesign,
-    trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
-    nameRU: '33 слова о дизайне',
-    nameEN: 'Stones in Exile',
-    thumbnail: '/uploads/thumbnail_stones_in_exile_b2f1b8f4b7.jpe',
-    movieId: '5'
-  },
-  {
-    country: 'США',
-    director: 'Стивен Кайак',
-    duration: '107',
-    year: '2010',
-    description: 'В конце 1960-х группа «Роллинг Стоунз», несмотря на все свои мегахиты и сверхуспешные концертные туры, была разорена. Виной всему — бездарный менеджмент и драконовское налогообложение в Британии. Тогда музыканты приняли не самое простое для себя решение: летом 1971 года после выхода альбома «Stiсky Fingers» они отправились на юг Франции записывать новую пластинку. Именно там, на Лазурном Берегу, в арендованном Китом Ричардсом подвале виллы Неллькот родился сборник «Exile on Main St.», который стал лучшим альбомом легендарной группы.',
-    image: movieAlmanac,
-    trailerLink: 'https://www.youtube.com/watch?v=UXcqcdYABFw',
-    nameRU: 'Киноальманах «100 лет дизайна»',
-    nameEN: 'Stones in Exile',
-    thumbnail: '/uploads/thumbnail_stones_in_exile_b2f1b8f4b7.jpe',
-    movieId: '6'
-  },
-]
+// URL для обращения к БД с фильмами beatfilm-movies
+export const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+// URL для изображений фильмов
+export const IMAGE_URL = 'https://api.nomoreparties.co/.';
+// объект с настройками для API beatfilm-movies
+export const moviesOptions = {
+  baseUrl: MOVIES_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}
+
+// начальное количество фильмов на странице
+export const AMOUNT_320 = 5;
+export const AMOUNT_768 = 8;
+export const AMOUNT_1280 = 12;
+// число фильмов, добавленных кнопкой Еще
+export const AMOUNT_ADDED_MOVIES_320_768 = 2;
+export const AMOUNT_ADDED_MOVIES_1280 = 3;
