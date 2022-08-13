@@ -41,4 +41,4 @@
 ## Демо
 Посмотреть готовый проект Movies можно [здесь](https://movies.ivkrylova.nomoredomains.xyz/).
 
-Репозиорий с бэкендом можно посмотреть [здесь](https://github.com/IVKrylova/movies-explorer-api).
+Репозиторий с бэкендом можно посмотреть [здесь](https://github.com/IVKrylova/movies-explorer-api).
