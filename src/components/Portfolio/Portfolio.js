@@ -19,7 +19,7 @@ const Portfolio = _ => {
           <img src={linkIcon} alt="иконка-стрелка для ссылки на другой сайт" className="portfolio__icon" />
         </li>
         <li className="portfolio__item">
-          <a className="portfolio__link" target="_blank" href="https://mesto.ivkrylova.nomoredomains.work/" rel="noreferrer">
+          <a className="portfolio__link" target="_blank" href="https://ivkrylova.github.io/react-mesto-auth/sign-in" rel="noreferrer">
             Одностраничное приложение
           </a>
           <img src={linkIcon} alt="иконка-стрелка для ссылки на другой сайт" className="portfolio__icon" />
