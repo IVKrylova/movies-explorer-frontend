@@ -1,5 +1,5 @@
 // URL для обращения к собственной БД
-export const MAIN_URL = 'https://api.movies.ivkrylova.nomoredomains.xyz';
+export const MAIN_URL = 'https://api.ivkrylova-movies.fun';
 // объект с настройками для собственной API
 export const mainOptions = {
   baseUrl: MAIN_URL,
